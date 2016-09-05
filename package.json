@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/othman853/atomic-todos-backend/issues"
   },
-  "homepage": "https://github.com/othman853/atomic-todos-backend#readme"
+  "homepage": "https://github.com/othman853/atomic-todos-backend#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
