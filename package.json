@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "nodemon": "node_modules/nodemon/bin/nodemon.js",
+    "mocha": "node_modules/mocha/bin/mocha"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-unit": "mocha tests/unit/**",
     "start": "node index.js",
-    "dev": "node_modules/nodemon/bin/nodemon.js"
+    "dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -22,9 +26,13 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express-load": "^1.1.15",
+    "mongoose": "^4.6.0",
     "morgan": "^1.7.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
+    "mocha": "^3.0.2",
     "nodemon": "^1.10.2"
   }
 }
