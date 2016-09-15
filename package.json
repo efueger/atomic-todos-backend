@@ -13,7 +13,8 @@
   },
   "scripts": {
     "test-unit": "node_modules/mocha/bin/mocha tests/unit/**",
-    "test": "mocha tests/",
+    "test-integration": "node_modules/mocha/bin/mocha tests/integration/**",
+    "test": "mocha tests/**",
     "start": "node index.js",
     "dev": "nodemon"
   },

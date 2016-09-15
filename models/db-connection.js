@@ -4,6 +4,10 @@ const chalk = require('chalk');
 
 const databaseUrl = process.env.ATOMIC_MONGO_URL;
 
+if(!databaseUrl) {
+  throw error(chalk.red('Database connection url is not set on this environment.'));
+}
+
 mongoose.connect(databaseUrl);
 
 mongoose.connection.on('connected', () => logger.info('Connected'));
