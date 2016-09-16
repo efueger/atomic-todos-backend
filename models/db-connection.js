@@ -1,15 +1,27 @@
+'use strict';
+
 const mongoose = require('mongoose');
 const logger = require('../loggers/logger')('mongo');
 const chalk = require('chalk');
 
-const databaseUrl = process.env.ATOMIC_MONGO_URL;
+module.exports = (onConnect, onError, onDisconnect) => {
 
-if(!databaseUrl) {
-  throw error(chalk.red('Database connection url is not set on this environment.'));
-}
+  onConnect = onConnect || () => logger.info('Connected');
+  onError = onError || ((error) => logger.error(`Error connecting to mongoose: ${error}`));
+  onDisconnect = onDisconnect || () => logger.info('Disconnected');
 
-mongoose.connect(databaseUrl);
+  const databaseUrl = process.env.ATOMIC_MONGO_URL;
 
-mongoose.connection.on('connected', () => logger.info('Connected'));
-mongoose.connection.on('error', (error) => logger.error(`Error connecting to mongoose: ${error}`));
-mongoose.connection.on('disconnected', () => logger.info('Disconnected'));
+  if(!databaseUrl) {
+    throw error(chalk.red('Database connection url is not set on this environment.'));
+  }
+
+  mongoose.Promise = global.Promise;
+
+  mongoose.connect(databaseUrl);
+
+  mongoose.connection.on('connected', onConnect);
+  mongoose.connection.on('error', onError);
+  mongoose.connection.on('disconnected', onDisconnect);
+
+};
