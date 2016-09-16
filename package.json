@@ -40,7 +40,9 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-spies": "^0.7.1",
+    "chai-string": "^1.2.0",
     "mocha": "^3.0.2",
-    "nodemon": "^1.10.2"
+    "nodemon": "^1.10.2",
+    "test-console": "^1.0.0"
   }
 }
