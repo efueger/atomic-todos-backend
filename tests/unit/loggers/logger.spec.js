@@ -36,7 +36,7 @@ describe(chalk.magenta('Unit: Logger'), () => {
     done();
   });
 
-  it('Should log the [TEST] tag using the magenta color', (done) => {
+  it.skip('Should log the [TEST] tag using the magenta color', (done) => {
 
     const output = stdout.inspectSync( () => {
       logger.info('a log');
