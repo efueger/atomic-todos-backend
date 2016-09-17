@@ -1,11 +1,15 @@
 'use strict';
 const path = require('path');
-const routerConfig = require('../etc/config').routerConfig;
 
-const router = require('express').Router(routerConfig);
+module.exports = (routerConfig) => {
 
-router.get('/', (request, response, next) => response.json({
-  hello:"I am working"
-}));
+  routerConfig = routerConfig || require('../etc/config').routerConfig;
 
-module.exports = router;
+  const router = require('express').Router(routerConfig);
+
+  router.get('/', (request, response, next) => response.json({
+    hello:"I am working"
+  }));
+
+  return router;
+};

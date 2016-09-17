@@ -8,6 +8,6 @@ const app = express();
 app.use(morgan('tiny'));
 app.use(bodyParser.json());
 
-routes.forEach((route) => app.use(route));
+routes.forEach((route) => app.use(route.prefix, route.router));
 
 module.exports = app;
