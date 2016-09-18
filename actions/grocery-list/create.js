@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (model) => {
+module.exports = (model, validator) => {
 
   const createAction = (request, response, next) => {
     response.json({

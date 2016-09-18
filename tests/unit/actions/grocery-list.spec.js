@@ -30,7 +30,7 @@ describe(chalk.magenta('Unit: Grocery List Route Actions'), () => {
 
   });
 
-  it('CREATE should return a welcome message', (done) => {
+  it('CREATE should save a new groceryStoreList', (done) => {
 
     const request = {};
     const jsonResponseSpy = chai.spy();
