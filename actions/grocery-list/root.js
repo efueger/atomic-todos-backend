@@ -1,13 +1,19 @@
 'use strict';
 
-module.exports = (model) => {
+module.exports = class RootAction {
 
-  const rootAction = (request, response, next) => {
+  constructor(model) {
+    this.model = model;
+  }
+
+  apply(request, response, next) {
+
     response.json({
       hello: 'Grocery lists'
     });
-  };
 
-  return rootAction;
+    next();
 
-};
+  }
+
+}

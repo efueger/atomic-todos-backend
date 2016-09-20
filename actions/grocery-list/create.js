@@ -1,12 +1,24 @@
 'use strict';
 
-module.exports = (model, validator) => {
+module.exports = class CreateAction{
 
-  const createAction = (request, response, next) => {
-    response.json({
-      postResponse:'Hello'
+  constructor(model, validator) {
+    this.model = model;
+    this.validator = validator;
+  }
+
+  apply(request, response, next) {
+
+    this.model
+    .save({})
+    .then(() => {
+      response.sendStatus(201);
+      next();
+    })
+    .catch((error) => {
+      response.status(500).json(error);
+      next(error);
     });
-  };
+  }
 
-  return createAction;
 }

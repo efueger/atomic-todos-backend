@@ -14,8 +14,8 @@ module.exports = (groceryStoreList, routerConfig) => {
 
   const router = Router(routerConfig);
 
-  router.get('/', rootAction);
-  router.post('/', createAction);
+  router.get('/', new RootAction(groceryStoreList).apply);
+  router.post('/', new CreateAction(groceryStoreList).apply);
 
   return router;
 };

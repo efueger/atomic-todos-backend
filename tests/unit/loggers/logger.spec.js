@@ -36,16 +36,6 @@ describe(chalk.magenta('Unit: Logger'), () => {
     done();
   });
 
-  it.skip('Should log the [TEST] tag using the magenta color', (done) => {
-
-    const output = stdout.inspectSync( () => {
-      logger.info('a log');
-    });
-
-    expect(output[0]).to.have.entriesCount("\u001b[35m[TEST]\u001b[39m", 1);
-    done();
-  });
-
   it('Should contain the \'a log\' logged message', (done) => {
 
     const output = stdout.inspectSync( () => {
