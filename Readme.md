@@ -1,9 +1,22 @@
 # Atomic Todos: The backend
 
-### Additional NPM taks available:
- - `start-dev`: Starts the server with hot reload by [Nodemon](https://github.com/remy/nodemon).
+#### Tech stack:
+- Node.js 5.8
+- Express
 
-### Running
+#### Pre config:
+- `ATOMIC_MONGO_URL`: URL to the mongo database.
+
+#### Running:
  - `npm install`
- - `npm start` or
- - `npm run dev`
+ - `npm start`
+
+#### Running with hot reload using nodemon:
+- `npm run dev`
+
+### Testing:
+###### All `npm test`
+###### Unit `npm run test-unit`
+###### Integration `npm run test-integration`
+
+#### Issue and backlog tracker: [Waffle](https://waffle.io/othman853/atomic-todos-backend)
