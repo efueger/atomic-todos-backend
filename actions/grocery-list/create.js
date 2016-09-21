@@ -1,24 +1,20 @@
 'use strict';
 
-module.exports = class CreateAction{
+module.exports = function createAction(request, response, next) {
 
-  constructor(model, validator) {
-    this.model = model;
-    this.validator = validator;
-  }
+  let groceryList = {};
+  groceryList.items = request.body;
+  groceryList.date = new Date();
+  groceryList.finished = false;
 
-  apply(request, response, next) {
+  this.GroceryStoreList.save(groceryList)
+  .then(() => {
+    response.sendStatus(201);
+    next();
+  })
+  .catch((error) => {
+    response.status(500).json(error);
+    next(error);
+  });
 
-    this.model
-    .save({})
-    .then(() => {
-      response.sendStatus(201);
-      next();
-    })
-    .catch((error) => {
-      response.status(500).json(error);
-      next(error);
-    });
-  }
-
-}
+};
