@@ -4,7 +4,7 @@
 - Node.js 5.8
 - Express
 
-#### Pre config:
+#### Environment Variables:
 - `ATOMIC_MONGO_URL`: URL to the mongo database.
 
 #### Running:
