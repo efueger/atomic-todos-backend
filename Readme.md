@@ -6,6 +6,7 @@
 
 #### Environment Variables:
 - `ATOMIC_MONGO_URL`: URL to the mongo database.
+- `ATOMIC_MONGO_TEST_URL`: URL to the test mongo database.
 
 #### Running:
  - `npm install`
