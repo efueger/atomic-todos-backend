@@ -1,1 +1,2 @@
---require tests/global-requirements.js 
+--require tests/global-requirements.js
+--recursive
