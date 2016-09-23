@@ -1,23 +1,21 @@
 'use strict';
 
-module.exports = function createAction(request, response, next) {
+module.exports = (app) => {
 
-  let groceryList = {
-    items: request.body,
-    date: new Date(),
-    finished: false
+  return (request, response, next) => {
+
+    let groceryList = {
+      items: request.body,
+      date: new Date(),
+      finished: false
+    };
+
+    app.models.GroceryList.create(groceryList)
+    .then(() => {
+      response.sendStatus(201);
+      next();
+    })
+    .catch(next);
   };
-
-  const model = new this.GroceryStoreList(groceryList);
-
-  model.save()
-  .then(() => {
-    response.sendStatus(201);
-    next();
-  })
-  .catch((error) => {
-    response.status(500).json(error);
-    next(error);
-  });
 
 };
