@@ -12,10 +12,10 @@ const Router = require('express').Router;
 module.exports = (GroceryStoreList) => {
 
   const router = Router(routerConfig);
-  const context = { GroceryStoreList: GroceryStoreList };
+  const routerContext = { GroceryStoreList: GroceryStoreList };
 
-  router.get('/', rootAction.bind(context));
-  router.post('/', createAction.bind(context));
+  router.get('/', rootAction.bind(routerContext));
+  router.post('/', createAction.bind(routerContext));
 
   return router;
 };
