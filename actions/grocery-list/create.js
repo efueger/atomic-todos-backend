@@ -2,12 +2,15 @@
 
 module.exports = function createAction(request, response, next) {
 
-  let groceryList = {};
-  groceryList.items = request.body;
-  groceryList.date = new Date();
-  groceryList.finished = false;
+  let groceryList = {
+    items: request.body,
+    date: new Date(),
+    finished: false
+  };
 
-  this.GroceryStoreList.save(groceryList)
+  const model = new this.GroceryStoreList(groceryList);
+
+  model.save()
   .then(() => {
     response.sendStatus(201);
     next();
