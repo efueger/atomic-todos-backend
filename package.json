@@ -3,10 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "bin": {
-    "nodemon": "node_modules/nodemon/bin/nodemon.js",
-    "mocha": "node_modules/mocha/bin/mocha"
-  },
   "engines": {
     "node": "5.8.0",
     "npm": "3.9.0"
