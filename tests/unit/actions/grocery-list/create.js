@@ -25,6 +25,14 @@ describe(chalk.magenta('Unit: Action: grocery-list.create'), () => {
       expect(response.sendStatus).to.have.been.calledWith(201);
       done();
     });
+  });
+
+  it.skip('Should respond with 500 when models.GroceryList.save rejects', (done) => {
 
   });
+
+  it.skip('Should respond with 400 when request body is invalid', (done) => {
+
+  });
+
 });
