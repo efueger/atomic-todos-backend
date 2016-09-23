@@ -8,9 +8,9 @@
     "npm": "3.9.0"
   },
   "scripts": {
-    "test-unit": "node_modules/mocha/bin/mocha tests/unit/**/**",
-    "test-integration": "node_modules/mocha/bin/mocha tests/integration/**",
-    "test": "mocha tests/**/**",
+    "test-unit": "mocha --opts tests/mocha.opts tests/unit/**/**",
+    "test-integration": "mocha --opts tests/mocha.opts tests/integration/**",
+    "test": "mocha --opts tests/mocha.opts tests/**/**",
     "start": "node index.js",
     "dev": "nodemon"
   },

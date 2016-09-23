@@ -1,15 +1,8 @@
 
 'use strict';
 
-const chalk = require('chalk');
-const chai = require('chai');
-const chaiString = require('chai-string');
-const path = require('path');
 const loggerBuilder = require(path.join(process.cwd(), 'loggers', 'logger'));
 const stdout = require('test-console').stdout;
-const assert = chai.assert;
-const expect = chai.expect;
-chai.use(chaiString);
 
 describe(chalk.magenta('Unit: Logger'), () => {
 
