@@ -31,6 +31,7 @@
     "express-load": "^1.1.15",
     "mongoose": "^4.6.0",
     "morgan": "^1.7.0",
+    "uppercamelcase": "^1.1.0",
     "winston": "^2.2.0"
   },
   "devDependencies": {
