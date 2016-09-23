@@ -1,17 +1,13 @@
 
 'use strict';
 
-const createAction = require(path.join(process.cwd(), 'actions', 'grocery-list', 'create'));
+const createActionFactory = require(path.join(process.cwd(), 'actions', 'grocery-list', 'create'));
 
 describe(chalk.magenta('Unit: Action: grocery-list.create'), () => {
 
-  it('Should call groceryStoreList.save and respond with 201', (done) => {
-    const saveStub = sinon.stub();
-
-    const Model = function () {};
-    Model.prototype.save = saveStub;
-
-    saveStub.resolves({});
+  it('Should call models.GroceryList.create and respond with 201', (done) => {
+    const GroceryList = { create: sinon.stub() };
+    GroceryList.create.resolves();
 
     const request = {body:[]};
     const response = {sendStatus: sinon.stub()};
@@ -20,9 +16,12 @@ describe(chalk.magenta('Unit: Action: grocery-list.create'), () => {
       finished: false,
       items: request.body
     }
+    const createAction = createActionFactory({
+      models: { GroceryList : GroceryList }
+    });
 
-    createAction.call({GroceryStoreList: Model}, request, response, () => {
-      // expect(saveStub).to.have.been.calledWith(expectedGroceryList);
+    createAction(request, response, () => {
+      expect(GroceryList.create).to.have.been.calledWith(expectedGroceryList);
       expect(response.sendStatus).to.have.been.calledWith(201);
       done();
     });

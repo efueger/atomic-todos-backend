@@ -7,8 +7,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;
 
-const connection = require(path.join(process.cwd(), 'models', 'db-connection'));
-
+const connection = require(path.join(process.cwd(), 'etc', 'database'));
 
 describe(chalk.magenta('Integration: Mongoose'), () => {
 
@@ -19,7 +18,10 @@ describe(chalk.magenta('Integration: Mongoose'), () => {
   it('Should connect to a mongo database', (done) => {
     const onConnectCallback = done;
     const onErrorCallback = done;
-    connection(onConnectCallback, onErrorCallback);
+    const config = {
+      url: process.env.ATOMIC_MONGO_TEST_URL
+    };
+    connection(config, onConnectCallback, onErrorCallback);
   });
 
   it('Should save an object in a mongo database', (done) => {
