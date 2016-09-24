@@ -10,6 +10,7 @@
   "scripts": {
     "test-unit": "mocha --opts tests/mocha.opts tests/unit/",
     "test-integration": "mocha --opts tests/mocha.opts tests/integration/",
+    "test-e2e": "mocha --opts tests/mocha.opts tests/e2e/",
     "test": "mocha --opts tests/mocha.opts tests/",
     "start": "node index.js",
     "dev": "nodemon"
