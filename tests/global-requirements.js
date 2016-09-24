@@ -5,6 +5,7 @@ const chalk = require('chalk');
 const sinon = require('sinon');
 const sinonAsPromised = require('sinon-as-promised');
 const sinonChai = require('sinon-chai');
+const supertest = require('supertest');
 
 chai.use(sinonChai);
 chai.use(chaiString);
@@ -15,3 +16,4 @@ global.sinon = sinon;
 global.path = path;
 global.chalk = chalk;
 global.chai = chai;
+global.supertest = supertest;
