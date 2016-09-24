@@ -51,8 +51,6 @@ const appFactory = () => {
   loadModels(modelsRootPath, app);
   loadRoutes(routesRootPath, app);
 
-  const db = require('./etc/database')({ url: process.env.ATOMIC_MONGO_URL });
-
   return app;
 
 };

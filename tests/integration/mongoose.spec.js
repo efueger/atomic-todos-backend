@@ -7,7 +7,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;
 
-const connection = require(path.join(process.cwd(), 'etc', 'database'));
+const db = require(path.join(process.cwd(), 'etc', 'database'));
 
 describe(chalk.magenta('Integration: Mongoose'), () => {
 
@@ -21,7 +21,7 @@ describe(chalk.magenta('Integration: Mongoose'), () => {
     const config = {
       url: process.env.ATOMIC_MONGO_TEST_URL
     };
-    connection(config, onConnectCallback, onErrorCallback);
+    db.connect(config, onConnectCallback, onErrorCallback);
   });
 
   it('Should save an object in a mongo database', (done) => {
@@ -46,6 +46,11 @@ describe(chalk.magenta('Integration: Mongoose'), () => {
       done();
     });
 
+  });
+
+  it('Should disconnect from mongo db', (done) => {
+    db.disconnect();
+    done();
   });
 
 });

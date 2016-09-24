@@ -5,22 +5,26 @@ const path = require('path');
 const logger = require(path.join(process.cwd(), 'loggers', 'logger'))('mongo');
 const chalk = require('chalk');
 
-module.exports = (config, onConnect, onError, onDisconnect) => {
+module.exports = {
 
-  onConnect = onConnect || () => logger.info('Connected');
-  onError = onError || ((error) => logger.error(`Error connecting to mongoose: ${error}`));
-  onDisconnect = onDisconnect || () => logger.info('Disconnected');
+  connect: (config, onConnect, onError, onDisconnect) => {
 
-  if(!config.url) {
-    throw error(chalk.red('Database connection url is not set on this environment.'));
-  }
+    onConnect = onConnect || () => logger.info('Connected');
+    onError = onError || ((error) => logger.error(`Error connecting to mongoose: ${error}`));
+    onDisconnect = onDisconnect || () => logger.info('Disconnected');
 
-  mongoose.Promise = global.Promise;
+    if(!config.url) {
+      throw error(chalk.red('Database connection url is not set on this environment.'));
+    }
 
-  mongoose.connect(config.url);
+    mongoose.Promise = global.Promise;
 
-  mongoose.connection.on('connected', onConnect);
-  mongoose.connection.on('error', onError);
-  mongoose.connection.on('disconnected', onDisconnect);
+    mongoose.connect(config.url);
 
+    mongoose.connection.on('connected', onConnect);
+    mongoose.connection.on('error', onError);
+    mongoose.connection.on('disconnected', onDisconnect);
+  },
+
+  disconnect: () => mongoose.connection.close()
 };
