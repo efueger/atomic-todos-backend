@@ -21,6 +21,14 @@ const loadModels = (modelsPath, app) => {
   });
 };
 
+const loadValidators = (validatorsPath, app) => {
+  fileSystem.readdirSync(validatorsPath).forEach(validatorFile => {
+    const validatorName = camelCase(removeJsExtension(validatorFile));
+    logger.info(`Validator: ${validatorName}`);
+    app.validators[validatorName] = require(path.join(validatorsPath, validatorFile));
+  });
+};
+
 const loadRoutes = (routesPath, app) => {
   fileSystem.readdirSync(routesPath).forEach(routeFile => {
     let route = require(path.join(routesPath, routeFile))(app);
@@ -44,11 +52,14 @@ const appFactory = () => {
   app.use(contentTypeChecker);
 
   app.models = {};
+  app.validators = {};
 
   const modelsRootPath = path.join(process.cwd(), 'models');
+  const validatorsRootPath = path.join(process.cwd(), 'validators');
   const routesRootPath = path.join(process.cwd(), 'routes');
 
   loadModels(modelsRootPath, app);
+  loadValidators(validatorsRootPath, app);
   loadRoutes(routesRootPath, app);
 
   return app;
