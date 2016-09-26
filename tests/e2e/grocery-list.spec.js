@@ -10,13 +10,11 @@ describe(chalk.magenta('End to end: Grocery List'), () => {
   before(() => db.connect({ url: process.env.ATOMIC_MONGO_TEST_URL }));
   after(() => db.disconnect());
 
-  it('Should create a new GroceryList on POST /grocery-lists/', (done) => {
-
+  it('Should fail with a 500 on POST /grocery-lists/ with an empty array as request body', (done) => {
     request
       .post('/grocery-lists/')
       .send([])
-      .expect(201, done);
-
+      .expect(500, done);
   });
 
 });
