@@ -1,5 +1,7 @@
 # Atomic Todos: The backend
 
+[![Build Status](https://snap-ci.com/othman853/atomic-todos-backend/branch/master/build_image)](https://snap-ci.com/othman853/atomic-todos-backend/branch/master)
+
 #### Tech stack:
 - Node.js 5.8
 - Express
