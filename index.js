@@ -2,7 +2,7 @@
 
 const port = process.env.PORT || 3000;
 const app = require('./app')();
-const logger = require('./loggers/logger')('index');
+const logger = require('./loggers/console-logger')('index');
 const db = require('./etc/database');
 
 db.connect({ url: process.env.ATOMIC_MONGO_URL });

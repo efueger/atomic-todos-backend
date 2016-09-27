@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose');
 const path = require('path');
-const logger = require(path.join(process.cwd(), 'loggers', 'logger'))('mongo');
+const logger = require(path.join(process.cwd(), 'loggers', 'console-logger'))('mongo');
 const chalk = require('chalk');
 
 module.exports = {

@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const camelcase = require('camelcase');
 const groceryRouterFactory = require('./routes/grocery-list');
-const logger = require('./loggers/logger')('setup');
+const logger = require('./loggers/console-logger')('setup');
 const contentTypeChecker = require('./middlewares/content-type-checker');
 
 const removeJsExtension = (fileName) => fileName.replace('.js', '');
