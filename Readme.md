@@ -21,5 +21,6 @@
 ###### All `npm test`
 ###### Unit `npm run test-unit`
 ###### Integration `npm run test-integration`
+###### End to end `npm run test-e2e`
 
 #### Issue and backlog tracker: [Waffle](https://waffle.io/othman853/atomic-todos-backend)
