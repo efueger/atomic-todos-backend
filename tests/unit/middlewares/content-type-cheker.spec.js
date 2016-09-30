@@ -23,11 +23,11 @@ describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
     response['send'] = sinon.stub();
     response['status'] = sinon.stub().returns(response);
 
-    contentTypeChecker(request, response, () => {
-      expect(response.status).to.have.been.calledWith(400);
-      expect(response.send).to.have.been.calledWith('Content-Type header is not set for this request');
-      done();
-    });
+    contentTypeChecker(request, response);
+
+    expect(response.status).to.have.been.calledWith(400);
+    expect(response.send).to.have.been.calledWith('Content-Type header is not set for this request');
+    done();
 
   });
 
@@ -39,11 +39,11 @@ describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
     response['send'] = sinon.stub();
     response['status'] = sinon.stub().returns(response);
 
-    contentTypeChecker(request, response, () => {
-      expect(response.status).to.have.been.calledWith(400);
-      expect(response.send).to.have.been.calledWith('Request Content-Type header is invalid. It must be only application/json');
-      done();
-    });
+    contentTypeChecker(request, response);
+
+    expect(response.status).to.have.been.calledWith(400);
+    expect(response.send).to.have.been.calledWith('Request Content-Type header is invalid. It must be only application/json');
+    done();
 
   });
 
@@ -55,12 +55,11 @@ describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
     response['send'] = sinon.stub();
     response['status'] = sinon.stub().returns(response);
 
-    contentTypeChecker(request, response, () => {
-      expect(response.status).to.have.been.calledWith(400);
-      expect(response.send).to.have.been.calledWith('Content-Type header is not set for this request');
-      done();
-    });
+    contentTypeChecker(request, response);
 
+    expect(response.status).to.have.been.calledWith(400);
+    expect(response.send).to.have.been.calledWith('Content-Type header is not set for this request');
+    done();
 
   });
 
