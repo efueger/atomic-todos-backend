@@ -14,9 +14,9 @@ const appFactory = () => {
 
   const app = express();
 
-  app.use(morgan('tiny'));
-  app.use(bodyParser.json());
+  app.use(morgan('common'));
   app.use(contentTypeChecker);
+  app.use(bodyParser.json());
 
   const modelsRootPath = path.join(process.cwd(), 'models');
   const validatorsRootPath = path.join(process.cwd(), 'validators');
