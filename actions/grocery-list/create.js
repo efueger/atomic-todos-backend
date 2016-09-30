@@ -14,16 +14,14 @@ module.exports = (app) => {
       });
     }
 
-    let groceryList = {
+    app.models.GroceryList.create({
       items: request.body,
       date: new Date(),
       finished: false
-    };
-
-    app.models.GroceryList.create(groceryList)
+    })
     .then(() => {
       response.sendStatus(201);
-      next();
+      return next();
     })
     .catch((error) => next({
       cause: error,
