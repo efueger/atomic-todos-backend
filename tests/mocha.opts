@@ -1,3 +1,2 @@
 --require tests/globals.js
 --recursive
---timeout 3000
