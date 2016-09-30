@@ -5,6 +5,17 @@
 #### Tech stack:
 - Node.js 5.8
 - Express
+- MongoDB
+- Mongoose
+- Winston and Morgan for logging
+
+#### Test stack:
+- Mocha
+- Chai
+- Sinon
+- Sinon-Chai
+- Sinon-As-Promised
+- Supertest
 
 #### Environment Variables:
 - `ATOMIC_MONGO_URL`: URL to the mongo database.
