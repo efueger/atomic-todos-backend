@@ -5,7 +5,7 @@ const app = require(path.join(process.cwd(), 'app'))();
 const request = supertest(app);
 const db = require(path.join(process.cwd(), 'etc', 'database'));
 
-describe(chalk.magenta('End to end: Grocery List'), () => {
+describe(chalk.magenta('End to end: App'), () => {
 
   before(() => db.connect({ url: process.env.ATOMIC_MONGO_TEST_URL }));
   after(() => db.disconnect());
