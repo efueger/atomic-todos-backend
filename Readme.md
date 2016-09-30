@@ -3,6 +3,8 @@
 [![Build Status](https://snap-ci.com/othman853/atomic-todos-backend/branch/master/build_image)](https://snap-ci.com/othman853/atomic-todos-backend/branch/master) 
 [![Stories in Ready](https://badge.waffle.io/othman853/atomic-todos-backend.svg?label=ready&title=Ready)](http://waffle.io/othman853/atomic-todos-backend)
 
+[![Throughput Graph](https://graphs.waffle.io/othman853/atomic-todos-backend/throughput.svg)](https://waffle.io/othman853/atomic-todos-backend/metrics/throughput)
+
 #### Tech stack:
 - Node.js 5.8
 - Express
