@@ -8,7 +8,7 @@ const logger = require('./loggers/console-logger')('setup');
 const contentTypeChecker = require('./middlewares/content-type-checker');
 const errorHandler = require('./middlewares/error-handler');
 const notFoundErrorHandler = require('./middlewares/not-found-handler');
-const loadModuleFolderCreator = require('./etc/folder-loader.js');
+const folderLoader = require('./etc/folder-loader.js');
 
 const appFactory = () => {
 
@@ -18,15 +18,11 @@ const appFactory = () => {
   app.use(contentTypeChecker);
   app.use(bodyParser.json());
 
-  const modelsRootPath = path.join(process.cwd(), 'models');
-  const validatorsRootPath = path.join(process.cwd(), 'validators');
-  const routesRootPath = path.join(process.cwd(), 'routes');
+  const load = folderLoader(app, logger);
 
-  const loadModuleFolder = loadModuleFolderCreator(app, logger);
-
-  loadModuleFolder('models');
-  loadModuleFolder('validators');
-  loadModuleFolder('routes', (app, routeBlueprint) => {
+  load('models');
+  load('validators');
+  load('routes', (app, routeBlueprint) => {
     let route = routeBlueprint(app);
     route.router.stack.forEach(stackItem => {
       stackItem.route.stack.forEach(innerStackItem => {
