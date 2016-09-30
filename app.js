@@ -6,6 +6,8 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const logger = require('./loggers/console-logger')('setup');
 const contentTypeChecker = require('./middlewares/content-type-checker');
+const errorHandler = require('./middlewares/error-handler');
+const notFoundErrorHandler = require('./middlewares/not-found-handler');
 const loadModuleFolderCreator = require('./etc/folder-loader.js');
 
 const appFactory = () => {
@@ -34,6 +36,9 @@ const appFactory = () => {
 
     app.use(route.prefix, route.router);
   });
+
+  app.use(errorHandler);
+  app.use(notFoundErrorHandler);
 
   return app;
 

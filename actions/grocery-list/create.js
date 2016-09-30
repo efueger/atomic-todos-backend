@@ -7,7 +7,11 @@ module.exports = (app) => {
     const validationError = app.validators.GroceryList.create(request.body);
 
     if (validationError) {
-      return next(validationError);
+      return next({
+        status: 400,
+        message: validationError.message,
+        cause: validationError
+      });
     }
 
     let groceryList = {
@@ -21,6 +25,10 @@ module.exports = (app) => {
       response.sendStatus(201);
       next();
     })
-    .catch(next);
+    .catch((error) => next({
+      cause: error,
+      status: 500,
+      message: 'Could not save Grocery List'
+    }));
   };
 };

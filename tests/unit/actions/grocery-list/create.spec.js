@@ -32,16 +32,17 @@ describe(chalk.magenta('Unit: Action: grocery-list.create'), () => {
   });
 
   it('Should call next with an error when models.GroceryList.save rejects', (done) => {
-    const expectedError = new Error('Expected error');
-    app.models.GroceryList.create.rejects(expectedError);
+    const expectedErrorCause = new Error('Expected error');
+    app.models.GroceryList.create.rejects(expectedErrorCause);
     const request = {};
     const response = {};
 
     const createAction = createActionFactory(app);
 
     createAction(request, response, (error) => {
-      expect(error).to.deep.equal(expectedError);
-      expect(error).to.have.deep.property('message', expectedError.message);
+      expect(error).to.have.deep.property('message', 'Could not save Grocery List');
+      expect(error).to.have.deep.property('status', 500);
+      expect(error).to.have.deep.property('cause', expectedErrorCause);
       done();
     });
   });
