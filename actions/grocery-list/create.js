@@ -4,7 +4,7 @@ module.exports = (app) => {
 
   return (request, response, next) => {
 
-    const validationError = app.validators.GroceryList.create(request.body);
+    const validationError = app.validators.GroceryList.create(request);
 
     if (validationError) {
       return next({
