@@ -7,11 +7,7 @@ module.exports = (app) => {
     const validationError = app.validators.GroceryList.create(request);
 
     if (validationError) {
-      return next({
-        status: 400,
-        message: validationError.message,
-        cause: validationError
-      });
+      return next(app.errors.BAD_REQUEST(validationError));
     }
 
     app.models.GroceryList.create({
@@ -20,13 +16,11 @@ module.exports = (app) => {
       finished: false
     })
     .then(() => {
-      response.sendStatus(201);
-      return next();
+      return response.sendStatus(201);
     })
-    .catch((error) => next({
-      cause: error,
-      status: 500,
-      message: 'Could not save Grocery List'
-    }));
+    .catch((error) => {
+      console.log('Error');
+      next(app.errors.DATABASE_ERROR(error, 'Could not save Grocery List'))
+    });
   };
 };
