@@ -9,6 +9,7 @@ const contentTypeChecker = require('./middlewares/content-type-checker');
 const errorHandler = require('./middlewares/error-handler');
 const notFoundErrorHandler = require('./middlewares/not-found-handler');
 const folderLoader = require('./etc/folder-loader.js');
+const applicationErrors = require('./etc/errors.js');
 
 const appFactory = () => {
 
@@ -35,6 +36,8 @@ const appFactory = () => {
 
   app.use(errorHandler);
   app.use(notFoundErrorHandler);
+
+  app.errors = applicationErrors;
 
   return app;
 
