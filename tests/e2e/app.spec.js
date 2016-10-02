@@ -25,4 +25,12 @@ describe(chalk.magenta('End to end: App'), () => {
       .expect(404, done);
   });
 
+  it('Should respond with 201 on POST /grocery-lists/', (done) => {
+    request
+      .post('/grocery-lists/')
+      .set('Content-Type', 'application/json')
+      .send([{description: 'Abc'}])
+      .expect(201, done);
+  });
+
 });
