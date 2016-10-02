@@ -3,7 +3,7 @@
 
 const createActionFactory = require(path.join(process.cwd(), 'actions', 'grocery-list', 'create'));
 
-describe(chalk.magenta('Unit: Action: grocery-list.create'), () => {
+describe.skip(chalk.magenta('Unit: Action: grocery-list.create'), () => {
 
   const GroceryListModel = { create: sinon.stub() };
   const GroceryListValidator = { create: sinon.stub() };
