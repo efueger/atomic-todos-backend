@@ -1,14 +1,13 @@
 'use strict';
 
 const BASE_ERROR = (id, status, cause, message) => {
-
-  return {
-    id: id,
-    status: status,
-    cause: cause,
-    message: message
+  if (!message && !cause) {
+    message = 'Internal Error';
+  } else if (!message && cause) {
+    message = cause.message;
   }
 
+  return { status, body: { id, cause, message } };
 };
 
 
