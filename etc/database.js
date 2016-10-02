@@ -7,11 +7,11 @@ const chalk = require('chalk');
 
 module.exports = {
 
-  connect: (config, onConnect, onError, onDisconnect) => {
+  connect(config) {
 
-    onConnect = onConnect || () => logger.info('Connected');
-    onError = onError || ((error) => logger.error(`Error connecting to mongoose: ${error}`));
-    onDisconnect = onDisconnect || () => logger.info('Disconnected');
+    const onConnect = config.onConnect || () => logger.info('Connected');
+    const onError = config.onError || ((error) => logger.error(`Error connecting to mongoose: ${error}`));
+    const onDisconnect = config.onDisconnect || () => logger.info('Disconnected');
 
     if(!config.url) {
       throw error(chalk.red('Database connection url is not set on this environment.'));
@@ -24,6 +24,7 @@ module.exports = {
     mongoose.connection.on('connected', onConnect);
     mongoose.connection.on('error', onError);
     mongoose.connection.on('disconnected', onDisconnect);
+
   },
 
   disconnect: () => mongoose.connection.close()
