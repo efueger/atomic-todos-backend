@@ -3,8 +3,7 @@ const exists = require('exists');
 module.exports = {
 
   create(request) {
-
-    if (!exists(request.body)){
+    if (!exists(request.body)) {
       return new Error('Request body is empty');
     }
 
@@ -12,6 +11,7 @@ module.exports = {
       return new Error('Request body is not an array');
     }
 
-  }
+    return null;
+  },
 
 };

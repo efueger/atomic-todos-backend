@@ -3,9 +3,8 @@ const camelCase = require('uppercamelcase');
 const fileSystem = require('fs');
 
 module.exports = (app, logger) => (folderName, loadAction) => {
-
-  const removeJsExtension = (fileName) => fileName.replace('.js', '');
-  const folderPath = path.join(process.cwd(), folderName);
+  const removeJsExtension = fileName => fileName.replace('.js', '');
+  const folderPath = path.join(process.cwd(), 'app', folderName);
 
   const defaultLoadAction = (app, loadedModule, fileName) => {
     logger.info(`${folderName}: ${fileName}`);

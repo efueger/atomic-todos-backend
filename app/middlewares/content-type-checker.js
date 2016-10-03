@@ -1,10 +1,9 @@
-'use strict';
+const exists = require('exists');
 
 module.exports = (request, response, next) => {
-
   const requestContentType = request.headers['content-type'];
 
-  if ( (typeof requestContentType === 'undefined') || (requestContentType === null)) {
+  if (!exists(requestContentType)) {
     return response.status(400).send('Content-Type header is not set for this request');
   }
 
@@ -12,6 +11,5 @@ module.exports = (request, response, next) => {
     return response.status(400).send('Request Content-Type header is invalid. It must be only application/json');
   }
 
-  next();
-
-}
+  return next();
+};

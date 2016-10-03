@@ -1,9 +1,9 @@
-'use strict';
+const appFactory = require('../../app/main.js');
+const db = require('../../app/etc/database');
 
-const app = require(path.join(process.cwd(), 'app'))();
-
+const app = appFactory();
 const request = supertest(app);
-const db = require(path.join(process.cwd(), 'etc', 'database'));
+
 
 describe(chalk.magenta('End to end: App'), () => {
 
@@ -29,8 +29,7 @@ describe(chalk.magenta('End to end: App'), () => {
     request
       .post('/grocery-lists/')
       .set('Content-Type', 'application/json')
-      .send([{description: 'Abc'}])
+      .send([{ description: 'Abc' }])
       .expect(201, done);
   });
-
 });
