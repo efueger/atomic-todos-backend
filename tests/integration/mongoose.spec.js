@@ -16,12 +16,12 @@ describe(chalk.magenta('Integration: Mongoose'), () => {
   });
 
   it('Should connect to a mongo database', (done) => {
-    const onConnectCallback = done;
-    const onErrorCallback = done;
     const config = {
-      url: process.env.ATOMIC_MONGO_TEST_URL
+      url: process.env.ATOMIC_MONGO_TEST_URL,
+      onConnect: done,
+      onError: done
     };
-    db.connect(config, onConnectCallback, onErrorCallback);
+    db.connect(config);
   });
 
   it('Should save an object in a mongo database', (done) => {
