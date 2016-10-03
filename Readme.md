@@ -22,6 +22,7 @@
 #### Environment Variables:
 - `ATOMIC_MONGO_URL`: URL to the mongo database.
 - `ATOMIC_MONGO_TEST_URL`: URL to the test mongo database.
+- `DISABLE_LOGS`: If set, disable all logs. Used in end to end tests to improve the readability of the tests feedbacks.
 
 #### Running:
  - `npm install`
