@@ -1,6 +1,6 @@
 'use strict';
 
-const notFoundErrorHandler = require(path.join(process.cwd(), 'middlewares', 'not-found-handler'));
+const notFoundErrorHandler = require(path.join(process.cwd(), 'app', 'middlewares', 'not-found-handler'));
 
 describe(chalk.magenta('Unit: Middleware: Not Found Handler'), () => {
 

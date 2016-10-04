@@ -1,6 +1,6 @@
 'use strict';
 
-const errorHandler = require(path.join(process.cwd(), 'middlewares', 'error-handler'));
+const errorHandler = require(path.join(process.cwd(), 'app', 'middlewares', 'error-handler'));
 
 describe(chalk.magenta('Unit: Middleware: Error Handler'), () => {
 

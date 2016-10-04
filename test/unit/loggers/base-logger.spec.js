@@ -1,7 +1,4 @@
-
-'use strict';
-
-const baseLoggerBuilder = require(path.join(process.cwd(), 'loggers', 'base-logger'));
+const baseLoggerBuilder = require(path.join(process.cwd(), 'app', 'loggers', 'base-logger'));
 
 describe(chalk.magenta('Unit: BaseLogger'), () => {
 

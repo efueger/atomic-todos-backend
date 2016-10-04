@@ -1,7 +1,4 @@
-
-'use strict';
-
-const createActionFactory = require(path.join(process.cwd(), 'actions', 'grocery-list', 'create'));
+const createActionFactory = require(path.join(process.cwd(), 'app', 'actions', 'grocery-list', 'create'));
 
 describe.skip(chalk.magenta('Unit: Action: grocery-list.create'), () => {
 

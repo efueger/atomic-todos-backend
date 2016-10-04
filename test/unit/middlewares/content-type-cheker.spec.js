@@ -1,6 +1,6 @@
 'use strict';
 
-const contentTypeChecker = require(path.join(process.cwd(), 'middlewares', 'content-type-checker'));
+const contentTypeChecker = require(path.join(process.cwd(), 'app', 'middlewares', 'content-type-checker'));
 
 describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
 
