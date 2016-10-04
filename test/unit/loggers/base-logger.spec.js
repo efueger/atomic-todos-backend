@@ -1,6 +1,6 @@
 const baseLoggerBuilder = require(path.join(process.cwd(), 'app', 'loggers', 'base-logger'));
 
-describe(chalk.magenta('Unit: BaseLogger'), () => {
+describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
 
   it('Should fail when no winston instance is specified on config object', (done) => {
     const configObject = {};

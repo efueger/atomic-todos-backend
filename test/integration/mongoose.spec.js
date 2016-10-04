@@ -7,7 +7,7 @@ const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;
 
-const db = require(path.join(process.cwd(), 'etc', 'database'));
+const db = require(path.join(process.cwd(), 'app', 'etc', 'database'));
 
 describe(chalk.magenta('Integration: Mongoose'), () => {
 
