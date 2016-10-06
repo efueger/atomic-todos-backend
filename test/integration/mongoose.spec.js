@@ -1,12 +1,6 @@
 'use strict';
-const path = require('path');
-const chalk = require('chalk');
+
 const mongoose = require('mongoose');
-
-const chai = require('chai');
-const expect = chai.expect;
-const assert = chai.assert;
-
 const db = require(path.join(process.cwd(), 'app', 'etc', 'database'));
 
 describe(chalk.magenta('Integration: Mongoose'), () => {

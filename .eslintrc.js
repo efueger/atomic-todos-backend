@@ -4,6 +4,14 @@ module.exports = {
         "node": true,
         "mocha": true
     },
+    "globals": {
+      "path": true,
+      "chalk": true,
+      "sinon": true,
+      "expect": true,
+      "assert": true,
+      "supertest": true
+    },
     "extends": "eslint:recommended",
     "rules": {
         "indent": [

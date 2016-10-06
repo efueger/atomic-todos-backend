@@ -99,7 +99,7 @@ describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
     const unexpectedTag = 'ABC';
     const expectedTag = '123';
     const expectedMessage = 'Whatever';
-    const config = { winston: winstonMock, tagFormatter: (tag) => expectedTag};
+    const config = { winston: winstonMock, tagFormatter: () => expectedTag};
     const baseLogger = baseLoggerBuilder(config)(unexpectedTag);
 
     baseLogger.info(expectedMessage);
@@ -117,7 +117,7 @@ describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
     const unexpectedMessage = 'ABC';
     const expectedMessage = '123';
     const expectedTag = 'Bla';
-    const config = { winston: winstonMock, messageFormatter: (tag) => expectedMessage};
+    const config = { winston: winstonMock, messageFormatter: () => expectedMessage};
     const baseLogger = baseLoggerBuilder(config)(expectedTag);
 
     baseLogger.info(unexpectedMessage);

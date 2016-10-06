@@ -14,7 +14,7 @@ describe.skip(chalk.magenta('Integration: ConsoleLogger'), () => {
       logger.info('a log');
     });
 
-    expect(output[0]).to.have.entriesCount("[TEST]", 1);
+    expect(output[0]).to.have.entriesCount('[TEST]', 1);
     done();
   });
 
@@ -24,7 +24,7 @@ describe.skip(chalk.magenta('Integration: ConsoleLogger'), () => {
       logger.info('a log');
     });
 
-    expect(output[0]).to.have.entriesCount("info:", 1);
+    expect(output[0]).to.have.entriesCount('info:', 1);
 
     done();
   });
@@ -35,7 +35,7 @@ describe.skip(chalk.magenta('Integration: ConsoleLogger'), () => {
       logger.info('a log');
     });
 
-    expect(output[0]).to.have.entriesCount("a log", 1);
+    expect(output[0]).to.have.entriesCount('a log', 1);
     done();
 
   });
