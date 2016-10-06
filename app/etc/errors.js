@@ -10,6 +10,6 @@ module.exports = {
 
   badRequest: (cause, message) => baseError('BadRequest', 400, cause, message),
   internalError: (cause, message) => baseError('InternalError', 500, cause, message),
-  databaseError: (cause, message) => baseError('DatabaseError', 500, cause, message),
+  databaseError: (cause, message) => baseError('DatabaseError', 500, cause, message)
 
 };

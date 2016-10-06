@@ -9,6 +9,6 @@ module.exports = (app) => {
 
   return {
     prefix: '/grocery-lists',
-    router,
+    router
   };
 };

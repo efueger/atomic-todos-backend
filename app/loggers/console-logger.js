@@ -4,8 +4,8 @@ const chalk = require('chalk');
 
 const winston = new (winstonModule.Logger)({
   transports: [
-    new (winstonModule.transports.Console)(),
-  ],
+    new (winstonModule.transports.Console)()
+  ]
 });
 
 const tagFormatter = tag => chalk.magenta(`[${tag.text.toUpperCase()}]`);

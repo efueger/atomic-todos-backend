@@ -6,18 +6,18 @@ const winston = new (winstonModule.Logger)({
     new (winstonModule.transports.File)({
       name: 'info-file',
       filename: 'info.log',
-      level: 'info',
+      level: 'info'
     }),
     new (winstonModule.transports.File)({
       name: 'error-file',
       filename: 'error.log',
-      level: 'error',
-    }),
-  ],
+      level: 'error'
+    })
+  ]
 });
 
 
 module.exports = baseLogger({
   winston,
-  tagFormatter: tag => `[${tag.toUpperCase()}]`,
+  tagFormatter: tag => `[${tag.toUpperCase()}]`
 });

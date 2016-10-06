@@ -25,5 +25,5 @@ module.exports = {
     mongoose.connection.on('disconnected', onDisconnect);
   },
 
-  disconnect: () => mongoose.connection.close(),
+  disconnect: () => mongoose.connection.close()
 };

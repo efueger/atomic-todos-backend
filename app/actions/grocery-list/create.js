@@ -9,7 +9,7 @@ module.exports = app =>
     app.models.GroceryList.create({
       items: request.body,
       date: new Date(),
-      finished: false,
+      finished: false
     })
     .then(() => response.sendStatus(201))
     .catch(error => next(app.errors.databaseError(error, 'Could not save Grocery List')));

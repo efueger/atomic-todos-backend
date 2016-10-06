@@ -10,7 +10,7 @@ const baseLogger = {
     if (message && (!process.env.DISABLE_LOGS)) {
       winston.error(tag, message);
     }
-  },
+  }
 
 };
 
@@ -23,7 +23,7 @@ module.exports = (config) => {
     const format = (tagToFormat, message) =>
     ({
       tag: (config.tagFormatter) ? config.tagFormatter(tagToFormat) : tag,
-      message: (config.messageFormatter && message) ? config.messageFormatter(message) : message,
+      message: (config.messageFormatter && message) ? config.messageFormatter(message) : message
     });
 
     const baseLoggerDecorator = {
@@ -34,7 +34,7 @@ module.exports = (config) => {
       error(message) {
         const formattedLog = format(tag, message);
         baseLogger.error(config.winston, formattedLog.tag, formattedLog.message);
-      },
+      }
     };
 
     return baseLoggerDecorator;
