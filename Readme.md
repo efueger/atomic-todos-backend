@@ -34,15 +34,15 @@
 #### Running with hot reload using nodemon:
 - `npm run dev`
 
-### Testing:
-###### All `npm test`
-###### Unit `npm run test-unit`
-###### Integration `npm run test-integration`
-###### End to end `npm run test-e2e`
+### Quality:
+###### Run code linting `npm run lint`
+###### Run All tests `npm test`
+###### Run Unit tests `npm run test-unit`
+###### Run Integration tests `npm run test-integration`
+###### Run End to end tests `npm run test-e2e`
 
 #### Issue and backlog tracker: [Waffle](https://waffle.io/othman853/atomic-todos-backend)
 
 
 #### Code quality and test coverage metrics:
 - [Codacy](https://www.codacy.com/app/anuar-yasser/atomic-todos-backend)
-- [Bithound](https://www.bithound.io/github/othman853/atomic-todos-backend/)
