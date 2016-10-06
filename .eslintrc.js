@@ -14,10 +14,8 @@ module.exports = {
     },
     "extends": "eslint:recommended",
     "rules": {
-        "indent": [
-            "error",
-            2
-        ],
+        "comma-dangle": [2, "never"],
+        "indent": ["error", 2],
         "linebreak-style": [
             "error",
             "unix"
