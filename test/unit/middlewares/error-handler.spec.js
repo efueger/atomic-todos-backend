@@ -4,10 +4,18 @@ const errorHandler = require(path.join(process.cwd(), 'app', 'middlewares', 'err
 
 describe(chalk.magenta('Unit: Middleware: Error Handler'), () => {
 
+  const request = {};
+  const response = {status: sinon.stub(), json: sinon.stub()};
+  response.status.returns(response);
+
+  beforeEach(done => {
+    response.status.reset();
+    response.json.reset();
+    done();
+  });
+
   it('Should respond with 400 and a message according to the received error structure', done => {
-    const request = {};
-    const response = {status: sinon.stub(), json: sinon.stub()};
-    response.status.returns(response);
+
     const error = {status: 400, body: {message: 'A message'} };
 
     errorHandler(error, request, response);
@@ -18,9 +26,7 @@ describe(chalk.magenta('Unit: Middleware: Error Handler'), () => {
   });
 
   it('Should respond with 500 and a generic message when the received error object has no such information', done => {
-    const request = {};
-    const response = {status: sinon.stub(), json: sinon.stub()};
-    response.status.returns(response);
+
     const error = {};
 
     errorHandler(error, request, response);
