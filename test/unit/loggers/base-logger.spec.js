@@ -53,6 +53,19 @@ describe(chalk.magenta('Unit: BaseLogger'), () => {
 
   });
 
+  it('Should call winston error function with specified tag and message', done => {
+
+    const config = { winston };
+    const expectedMessage = 'Whatever';
+    const expectedTag = 'tag';
+    const baseLogger = baseLoggerBuilder(config)(expectedTag);
+
+    baseLogger.error('Whatever');
+
+    expect(winston.error).to.have.been.calledWith(expectedTag, expectedMessage);
+    done();
+  });
+
   it('Should not call winston info function when no message is specified', done => {
 
     const config = { winston };
@@ -61,6 +74,19 @@ describe(chalk.magenta('Unit: BaseLogger'), () => {
     baseLogger.info();
 
     expect(winston.info).to.not.have.been.called;
+    done();
+
+  });
+
+
+  it('Should not call winston error function when no message is specified', done => {
+
+    const config = { winston };
+    const baseLogger = baseLoggerBuilder(config)({});
+
+    baseLogger.error();
+
+    expect(winston.error).to.not.have.been.called;
     done();
 
   });
