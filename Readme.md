@@ -12,14 +12,15 @@
 - Mongoose
 - Winston and Morgan for logging
 
-#### Test stack:
-- Mocha
+#### Quality stack:
 - Chai
+- EsLint
+- Istanbul
+- Mocha
 - Sinon
 - Sinon-Chai
 - Sinon-As-Promised
 - Supertest
-- Istanbul
 
 #### Environment Variables:
 - `ATOMIC_MONGO_URL`: URL to the mongo database.
