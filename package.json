@@ -10,8 +10,8 @@
   "scripts": {
     "test-unit": "mocha --opts test/mocha.opts test/unit/",
     "test-integration": "mocha --opts test/mocha.opts test/integration/",
-    "test-e2e": "export DISABLE_LOGS=true && mocha --opts test/mocha.opts test/e2e/",
-    "test": "npm run lint && mocha --opts test/mocha.opts test/",
+    "test-e2e": "mocha --opts test/mocha.opts test/e2e/",
+    "test": "npm run lint && istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
     "start": "node index.js",
     "lint": "eslint ./app ./test",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage",

@@ -25,7 +25,6 @@
 #### Environment Variables:
 - `ATOMIC_MONGO_URL`: URL to the mongo database.
 - `ATOMIC_MONGO_TEST_URL`: URL to the test mongo database.
-- `DISABLE_LOGS`: If set, disable all logs. Used in end to end tests to improve the readability of the tests feedbacks.
 - `CODACY_PROJECT_TOKEN`: Codacy token. Required to send testing metrics to the [Codacy quality analysis tool](https://www.codacy.com/app/anuar-yasser/atomic-todos-backend).
 
 #### Running:
@@ -37,10 +36,12 @@
 
 ### Quality:
 ###### Run code linting `npm run lint`
-###### Run All tests `npm test`
+###### Run All tests and show summarized line coverage report `npm test`
 ###### Run Unit tests `npm run test-unit`
 ###### Run Integration tests `npm run test-integration`
 ###### Run End to end tests `npm run test-e2e`
+###### Send line coverage metrics to codacy `npm run coverage` -
+*This will only take effect in CI, since Codacy "binds" each `coverage` call with a specific commit.
 
 #### Issue and backlog tracker: [Waffle](https://waffle.io/othman853/atomic-todos-backend)
 
