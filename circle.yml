@@ -1,5 +1,3 @@
 machine:
   node:
     version: 5.8
-  npm:
-    version: 3.9
