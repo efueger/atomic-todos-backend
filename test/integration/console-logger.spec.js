@@ -4,9 +4,9 @@
 const loggerBuilder = require(path.join(process.cwd(), 'app', 'loggers', 'console-logger'));
 const stdout = require('test-console').stdout;
 
-describe.skip(chalk.magenta('Integration: ConsoleLogger'), () => {
+describe(chalk.magenta('Integration: ConsoleLogger'), () => {
 
-  const logger = loggerBuilder('test');
+  const logger = loggerBuilder({text: 'test'});
 
   it('Should have the tag [TEST]', done => {
 
