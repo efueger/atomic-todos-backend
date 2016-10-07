@@ -14,5 +14,4 @@ module.exports = app =>
     .then(() => response.sendStatus(201))
     .catch(error => next(app.errors.databaseError(error, 'Could not save Grocery List')));
 
-    return null;
   };

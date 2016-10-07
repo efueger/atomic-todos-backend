@@ -20,6 +20,11 @@ module.exports = config => {
   }
 
   const baseLoggerDecoratorCreator = tag => {
+
+    if (!tag) {
+      throw new Error('Failed to create a new logger: No tag specified.');
+    }
+
     const format = (tagToFormat, message) =>
     ({
       tag: (config.tagFormatter) ? config.tagFormatter(tagToFormat) : tag,
