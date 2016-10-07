@@ -9,7 +9,7 @@ describe.skip(chalk.magenta('Unit: Action: grocery-list.create'), () => {
     validators: { GroceryList: GroceryListValidator }
   };
 
-  it('Should call models.GroceryList.create and respond with 201', (done) => {
+  it('Should call models.GroceryList.create and respond with 201', done => {
     app.validators.GroceryList.create.returns(null);
     app.models.GroceryList.create.resolves();
     const request = {body:[]};
@@ -37,7 +37,7 @@ describe.skip(chalk.magenta('Unit: Action: grocery-list.create'), () => {
 
   });
 
-  it('Should call next with an error when models.GroceryList.save rejects', (done) => {
+  it('Should call next with an error when models.GroceryList.save rejects', done => {
     const expectedErrorCause = new Error('Expected error');
     app.models.GroceryList.create.rejects(expectedErrorCause);
     app.validators.GroceryList.create.returns(null);
@@ -46,7 +46,7 @@ describe.skip(chalk.magenta('Unit: Action: grocery-list.create'), () => {
 
     const createAction = createActionFactory(app);
 
-    createAction(request, response, (error) => {
+    createAction(request, response, error => {
       expect(error).to.have.deep.property('message', 'Could not save Grocery List');
       expect(error).to.have.deep.property('status', 500);
       expect(error).to.have.deep.property('cause', expectedErrorCause);
@@ -54,7 +54,7 @@ describe.skip(chalk.magenta('Unit: Action: grocery-list.create'), () => {
     });
   });
 
-  it('Should respond with 400 when request body is invalid', (done) => {
+  it('Should respond with 400 when request body is invalid', done => {
 
     const expectedErrorCause = new Error('Expected error');
     app.validators.GroceryList.create.returns(expectedErrorCause);
@@ -63,7 +63,7 @@ describe.skip(chalk.magenta('Unit: Action: grocery-list.create'), () => {
 
     const createAction = createActionFactory(app);
 
-    createAction(request, response, (error) => {
+    createAction(request, response, error => {
       expect(error).to.have.deep.property('message', expectedErrorCause.message);
       expect(error).to.have.deep.property('status', 400);
       expect(error).to.have.deep.property('cause', expectedErrorCause);

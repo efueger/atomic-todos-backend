@@ -2,13 +2,13 @@ const baseLoggerBuilder = require(path.join(process.cwd(), 'app', 'loggers', 'ba
 
 describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
 
-  it('Should fail when no winston instance is specified on config object', (done) => {
+  it('Should fail when no winston instance is specified on config object', done => {
     const configObject = {};
     expect(() => baseLoggerBuilder(configObject)).to.throw('Failed to create a new logger: No winston specified on its config object.');
     done();
   });
 
-  it('Should return the new logger object with info and error functions', (done) => {
+  it('Should return the new logger object with info and error functions', done => {
     const winstonMock = {
       info: sinon.stub(),
       error: sinon.stub()
@@ -25,7 +25,7 @@ describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
     done();
   });
 
-  it('Should call winston info function with default tag and specified message', (done) => {
+  it('Should call winston info function with default tag and specified message', done => {
     const winstonMock = {
       info: sinon.stub(),
       error: sinon.stub()
@@ -42,7 +42,7 @@ describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
 
   });
 
-  it('Should call winston info function with specified tag and message', (done) => {
+  it('Should call winston info function with specified tag and message', done => {
     const winstonMock = {
       info: sinon.stub(),
       error: sinon.stub()
@@ -59,7 +59,7 @@ describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
 
   });
 
-  it('Should call winston info function with overridden default tag and message', (done) => {
+  it('Should call winston info function with overridden default tag and message', done => {
     const winstonMock = {
       info: sinon.stub(),
       error: sinon.stub()
@@ -76,7 +76,7 @@ describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
 
   });
 
-  it('Should not call winston info function when no message is specified', (done) => {
+  it('Should not call winston info function when no message is specified', done => {
     const winstonMock = {
       info: sinon.stub(),
       error: sinon.stub()
@@ -91,7 +91,7 @@ describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
 
   });
 
-  it('Should call tag formatter function specified on config', (done) => {
+  it('Should call tag formatter function specified on config', done => {
     const winstonMock = {
       info: sinon.stub(),
       error: sinon.stub()
@@ -109,7 +109,7 @@ describe.skip(chalk.magenta('Unit: BaseLogger'), () => {
 
   });
 
-  it('Should call tag formatter function specified on config', (done) => {
+  it('Should call tag formatter function specified on config', done => {
     const winstonMock = {
       info: sinon.stub(),
       error: sinon.stub()

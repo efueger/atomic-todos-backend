@@ -4,7 +4,7 @@ const notFoundErrorHandler = require(path.join(process.cwd(), 'app', 'middleware
 
 describe(chalk.magenta('Unit: Middleware: Not Found Handler'), () => {
 
-  it('Should respond with 404', (done) => {
+  it('Should respond with 404', done => {
 
     const request = {};
     const response = {sendStatus: sinon.stub()};

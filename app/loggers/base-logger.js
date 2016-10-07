@@ -14,12 +14,12 @@ const baseLogger = {
 
 };
 
-module.exports = (config) => {
+module.exports = config => {
   if (!config.winston) {
     throw new Error('Failed to create a new logger: No winston specified on its config object.');
   }
 
-  const baseLoggerDecoratorCreator = (tag) => {
+  const baseLoggerDecoratorCreator = tag => {
     const format = (tagToFormat, message) =>
     ({
       tag: (config.tagFormatter) ? config.tagFormatter(tagToFormat) : tag,

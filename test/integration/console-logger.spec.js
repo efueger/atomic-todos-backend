@@ -8,7 +8,7 @@ describe.skip(chalk.magenta('Integration: ConsoleLogger'), () => {
 
   const logger = loggerBuilder('test');
 
-  it('Should have the tag [TEST]', (done) => {
+  it('Should have the tag [TEST]', done => {
 
     const output = stdout.inspectSync( () => {
       logger.info('a log');
@@ -18,7 +18,7 @@ describe.skip(chalk.magenta('Integration: ConsoleLogger'), () => {
     done();
   });
 
-  it('Should have the type \'info:\' ', (done) => {
+  it('Should have the type \'info:\' ', done => {
 
     const output = stdout.inspectSync( () => {
       logger.info('a log');
@@ -29,7 +29,7 @@ describe.skip(chalk.magenta('Integration: ConsoleLogger'), () => {
     done();
   });
 
-  it('Should contain the \'a log\' logged message', (done) => {
+  it('Should contain the \'a log\' logged message', done => {
 
     const output = stdout.inspectSync( () => {
       logger.info('a log');

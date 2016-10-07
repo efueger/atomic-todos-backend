@@ -24,8 +24,8 @@ const appFactory = () => {
   load('validators');
   load('routes', (application, routeBlueprint) => {
     const route = routeBlueprint(app);
-    route.router.stack.forEach((stackItem) => {
-      stackItem.route.stack.forEach((innerStackItem) => {
+    route.router.stack.forEach(stackItem => {
+      stackItem.route.stack.forEach(innerStackItem => {
         logger.info(`Route: ${innerStackItem.method.toUpperCase()} ${path.join(route.prefix, stackItem.route.path)}`);
       });
     });

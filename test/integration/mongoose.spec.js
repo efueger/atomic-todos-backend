@@ -9,7 +9,7 @@ describe(chalk.magenta('Integration: Mongoose'), () => {
     test: String
   });
 
-  it('Should connect to a mongo database', (done) => {
+  it('Should connect to a mongo database', done => {
     const config = {
       url: process.env.ATOMIC_MONGO_TEST_URL,
       onConnect: done,
@@ -18,7 +18,7 @@ describe(chalk.magenta('Integration: Mongoose'), () => {
     db.connect(config);
   });
 
-  it('Should save an object in a mongo database', (done) => {
+  it('Should save an object in a mongo database', done => {
 
     const testDocument = new IntegrationTestDocument({ test: 'Testing' });
 
@@ -28,7 +28,7 @@ describe(chalk.magenta('Integration: Mongoose'), () => {
 
   });
 
-  it('Should retrieve an object from the database', (done) => {
+  it('Should retrieve an object from the database', done => {
 
     IntegrationTestDocument.findOne({test:'Testing'}, (error, doc) => {
 
@@ -42,7 +42,7 @@ describe(chalk.magenta('Integration: Mongoose'), () => {
 
   });
 
-  it('Should disconnect from mongo db', (done) => {
+  it('Should disconnect from mongo db', done => {
     db.disconnect();
     done();
   });

@@ -4,7 +4,7 @@ const contentTypeChecker = require(path.join(process.cwd(), 'app', 'middlewares'
 
 describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
 
-  it('Should call next when request has Content-Type equals to application/json', (done) => {
+  it('Should call next when request has Content-Type equals to application/json', done => {
 
     const expectedContentType = 'application/json';
 
@@ -15,7 +15,7 @@ describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
 
   });
 
-  it('Should respond with 400 and an error message when Content-Type is absent from request headers', (done) => {
+  it('Should respond with 400 and an error message when Content-Type is absent from request headers', done => {
 
     const request = { headers: {} };
     const response = {};
@@ -31,7 +31,7 @@ describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
 
   });
 
-  it('Should respond with 400 and an error message when Content-Type request header is different from application/json', (done) => {
+  it('Should respond with 400 and an error message when Content-Type request header is different from application/json', done => {
 
     const request = { headers: {'content-type': 'whatever'} };
     const response = {};
@@ -47,7 +47,7 @@ describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
 
   });
 
-  it('Should respond with 400 and an error message when Content-Type request header is null or undefined', (done) => {
+  it('Should respond with 400 and an error message when Content-Type request header is null or undefined', done => {
 
     const request = { headers: {'content-type': undefined} };
     const response = {};
