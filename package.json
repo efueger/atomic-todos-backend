@@ -13,7 +13,7 @@
     "test-e2e": "mocha --opts test/mocha.opts test/e2e/",
     "test": "npm run lint && istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
     "start": "node index.js",
-    "lint": "eslint ./app ./test",
+    "lint": "eslint ./app ./test ./index.js",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage && rm -rf ./coverage",
     "dev": "nodemon"
   },
