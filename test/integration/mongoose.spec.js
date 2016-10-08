@@ -1,9 +1,9 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const db = require(path.join(process.cwd(), 'app', 'etc', 'database'));
+const db = require('../../app/etc/database');
 
-describe(chalk.magenta('Integration: Mongoose'), () => {
+describe('Integration: Mongoose', () => {
 
   const IntegrationTestDocument = mongoose.model('IntegrationTestDocument', {
     test: String

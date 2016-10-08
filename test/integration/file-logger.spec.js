@@ -1,7 +1,7 @@
 const loggers = require('../../app/loggers');
 const winston = require('winston');
 
-describe(chalk.magenta('Integration: File Logger'), () => {
+describe('Integration: File Logger', () => {
 
 
   const loggerTag = 'logger';

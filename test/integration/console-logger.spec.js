@@ -1,10 +1,10 @@
 
 'use strict';
 
-const loggerBuilder = require(path.join(process.cwd(), 'app', 'loggers', 'console-logger'));
+const loggerBuilder = require('../../app/loggers/console-logger');
 const stdout = require('test-console').stdout;
 
-describe(chalk.magenta('Integration: ConsoleLogger'), () => {
+describe('Integration: ConsoleLogger', () => {
 
   const logger = loggerBuilder({text: 'test'});
 
