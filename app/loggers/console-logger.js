@@ -1,6 +1,7 @@
 const winstonModule = require('winston');
-const baseLogger = require('./base-logger');
+const BaseLogger = require('./base-logger');
 const chalk = require('chalk');
+const tags = require('./tags');
 
 const winston = new (winstonModule.Logger)({
   transports: [
@@ -8,7 +9,10 @@ const winston = new (winstonModule.Logger)({
   ]
 });
 
-const tagFormatter = tag => chalk.magenta(`[${tag.text.toUpperCase()}]`);
-const messageFormatter = message => chalk.green(message);
-
-module.exports = baseLogger({ winston, tagFormatter, messageFormatter });
+module.exports = tag => new BaseLogger(
+  { winston,
+    tag: tag || tags.DEFAULT,
+    tagFormatter: tag => chalk.magenta(`[${tag.text.toUpperCase()}]`),
+    messageFormatter: message => chalk.green(message)
+  }
+);

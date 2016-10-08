@@ -1,5 +1,5 @@
 const winstonModule = require('winston');
-const baseLogger = require('./base-logger');
+const BaseLogger = require('./base-logger');
 
 const winston = new (winstonModule.Logger)({
   transports: [
@@ -17,7 +17,4 @@ const winston = new (winstonModule.Logger)({
 });
 
 
-module.exports = baseLogger({
-  winston,
-  tagFormatter: tag => `[${tag.toUpperCase()}]`
-});
+module.exports = tag => new BaseLogger({ winston, tag });

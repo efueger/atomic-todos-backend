@@ -1,49 +1,41 @@
-const baseLogger = {
+'use strict';
 
-  info(winston, tag, message) {
-    if (message && (!process.env.DISABLE_LOGS)) {
-      winston.info(tag, message);
+class BaseLogger {
+
+  constructor(config) {
+
+    if (!config) {
+      throw new Error('Failed to create a new logger: No config object specified.');
     }
-  },
 
-  error(winston, tag, message) {
-    if (message && (!process.env.DISABLE_LOGS)) {
-      winston.error(tag, message);
+    if (!config.winston) {
+      throw new Error('Failed to create a new logger: No winston specified on its config object.');
+    }
+
+    if (!config.tag) {
+      throw new Error('Failed to create a new logger: No tag specified on its config object.');
+    }
+
+    this.tag = config.tag;
+    this.winston = config.winston;
+    this._tagFormatter = config.tagFormatter || (tag => tag.text);
+    this._messageFormatter = config.messageFormatter || (message => message);
+  }
+
+  _log(message, log) {
+    if (message) {
+      log(this._tagFormatter(this.tag), this._messageFormatter(message));
     }
   }
 
-};
-
-module.exports = config => {
-  if (!config.winston) {
-    throw new Error('Failed to create a new logger: No winston specified on its config object.');
+  info(message) {
+    this._log(message, this.winston.info);
   }
 
-  const baseLoggerDecoratorCreator = tag => {
+  error(message) {
+    this._log(message, this.winston.error);
+  }
 
-    if (!tag) {
-      throw new Error('Failed to create a new logger: No tag specified.');
-    }
+}
 
-    const format = (tagToFormat, message) =>
-    ({
-      tag: (config.tagFormatter) ? config.tagFormatter(tagToFormat) : tag,
-      message: (config.messageFormatter && message) ? config.messageFormatter(message) : message
-    });
-
-    const baseLoggerDecorator = {
-      info(message) {
-        const formattedLog = format(tag, message);
-        baseLogger.info(config.winston, formattedLog.tag, formattedLog.message);
-      },
-      error(message) {
-        const formattedLog = format(tag, message);
-        baseLogger.error(config.winston, formattedLog.tag, formattedLog.message);
-      }
-    };
-
-    return baseLoggerDecorator;
-  };
-
-  return baseLoggerDecoratorCreator;
-};
+module.exports = BaseLogger;
