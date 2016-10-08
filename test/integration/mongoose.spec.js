@@ -9,6 +9,13 @@ describe('Integration: Mongoose', () => {
     test: String
   });
 
+  it('Should fail to connect when no url is specified', done => {
+    const config = { url: null };
+
+    expect(() => db.connect(config)).to.throw('Database connection url is not set on this environment.');
+    done();
+  });
+
   it('Should connect to a mongo database', done => {
     const config = {
       url: process.env.ATOMIC_MONGO_TEST_URL,
