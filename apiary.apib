@@ -1,13 +1,22 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
+HOST: http://api-atomic-todos.heroku.com
 
 # Atomic Todos Backend
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+Atomic todos is an API.
 
-## Questions Collection [/questions]
+## Error Contract
+Default error response that will be delivered in case something goes wrong.
 
-### List All Questions [GET]
+    {
+        "id": "BadRequest",
+        "message": "You missed a request parameter"
+    }
+
+
+## Grocery Lists [/grocery-lists]
+
+### List All Grocery Lists [GET]
 
 + Response 200 (application/json)
 
@@ -33,7 +42,7 @@ Polls is a simple API allowing consumers to view polls and vote in them.
             }
         ]
 
-### Create a New Question [POST]
+### Create a New Grocery List [POST]
 
 You may create your own question using this action. It takes a JSON
 object containing a question and a collection of answers in the
@@ -77,4 +86,14 @@ form of choices.
                         "votes": 0
                     }
                 ]
+            }
+
++ Response 400 (application/json)
+    
+    
+    + Body
+    
+            {
+                "id": "BadRequest",
+                "message": "You missed a request parameter"
             }
