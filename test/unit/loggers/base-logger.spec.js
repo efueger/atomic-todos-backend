@@ -7,8 +7,8 @@ describe('Unit: BaseLogger', () => {
     return {
       winston,
       tag: { text: tagText },
-      tagFormatter: formattedTagText ? () => formattedTagText : undefined,
-      messageFormatter: formattedMessageText ? () => formattedMessageText : undefined
+      tagFormatter: formattedTagText ? () => formattedTagText : null,
+      messageFormatter: formattedMessageText ? () => formattedMessageText : null
     };
   };
 
