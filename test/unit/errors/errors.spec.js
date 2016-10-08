@@ -1,6 +1,6 @@
-const errors = require(path.join(process.cwd(), 'app', 'etc', 'errors'));
+const errors = require('../../../app/etc/errors');
 
-describe(chalk.magenta('Unit: Errors'), () => {
+describe('Unit: Errors', () => {
 
   it('Should return a bad request error on badRequest call', done => {
 

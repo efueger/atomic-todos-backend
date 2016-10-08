@@ -1,8 +1,8 @@
 'use strict';
 
-const errorHandler = require(path.join(process.cwd(), 'app', 'middlewares', 'error-handler'));
+const errorHandler = require('../../../app/middlewares/error-handler');
 
-describe(chalk.magenta('Unit: Middleware: Error Handler'), () => {
+describe('Unit: Middleware: Error Handler', () => {
 
   const request = {};
   const response = {status: sinon.stub(), json: sinon.stub()};

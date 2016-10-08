@@ -1,6 +1,6 @@
-const BaseLogger = require(path.join(process.cwd(), 'app', 'loggers', 'base-logger'));
+const BaseLogger = require('../../../app/loggers/base-logger');
 
-describe(chalk.magenta('Unit: BaseLogger'), () => {
+describe('Unit: BaseLogger', () => {
 
   const winston = { info: sinon.stub(), error: sinon.stub() };
   const mockConfig = (tagText, formattedTagText, formattedMessageText) => {

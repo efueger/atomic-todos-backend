@@ -1,6 +1,6 @@
-describe(chalk.magenta('Unit: Validators: GroceryListValidator'), () => {
+const validator = require('../../../app/validators/grocery-list');
 
-  const validator = require(path.join(process.cwd(), 'app', 'validators', 'grocery-list'));
+describe('Unit: Validators: GroceryListValidator', () => {
 
   it('Should return an error with empty request body', done => {
     const expectedErrorMessage = 'Request body is empty';

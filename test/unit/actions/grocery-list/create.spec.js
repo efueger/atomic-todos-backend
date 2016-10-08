@@ -1,6 +1,6 @@
-const createActionFactory = require(path.join(process.cwd(), 'app', 'actions', 'grocery-list', 'create'));
+const createActionFactory = require('../../../../app/actions/grocery-list/create');
 
-describe(chalk.magenta('Unit: Action: grocery-list.create'), () => {
+describe('Unit: Action: grocery-list.create', () => {
   'use strict';
   let request = {};
   let response = {};

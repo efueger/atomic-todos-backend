@@ -1,8 +1,8 @@
 'use strict';
 
-const contentTypeChecker = require(path.join(process.cwd(), 'app', 'middlewares', 'content-type-checker'));
+const contentTypeChecker = require('../../../app/middlewares/content-type-checker');
 
-describe(chalk.magenta('Unit: Middleware: Content Type Checker'), () => {
+describe('Unit: Middleware: Content Type Checker', () => {
 
   it('Should call next when request has Content-Type equals to application/json', done => {
 
