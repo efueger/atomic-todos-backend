@@ -1,10 +1,9 @@
-reporter: apiary
 dry-run: null
 hookfiles: null
 language: nodejs
 sandbox: false
 server: npm start
-server-wait: 10
+server-wait: 7
 init: false
 names: false
 only: []
