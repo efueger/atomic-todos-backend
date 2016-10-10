@@ -22,4 +22,14 @@ describe('Unit: Validators: GroceryListValidator', () => {
     done();
   });
 
+  it('Should return null when request body is valid', done => {
+
+    const validationError = validator.create({body: [
+      { description: 'Something' }
+    ]});
+
+    expect(validationError).to.equal(null);
+    done();
+  });
+
 });
