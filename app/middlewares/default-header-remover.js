@@ -3,4 +3,5 @@ module.exports = (request, response, next) => {
   response.removeHeader('content-length');
   response.removeHeader('etag');
   response.removeHeader('date');
+  next();
 };

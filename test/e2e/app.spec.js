@@ -22,6 +22,7 @@ describe('End to end: App', () => {
     request
       .get('/i-do-not-exist')
       .set('Content-Type', 'application/json')
+      .send()
       .expect(404, done);
   });
 
