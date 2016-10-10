@@ -6,6 +6,7 @@ const loggers = require('./loggers');
 const contentTypeChecker = require('./middlewares/content-type-checker');
 const errorHandler = require('./middlewares/error-handler');
 const notFoundErrorHandler = require('./middlewares/not-found-handler');
+const defaultHeaderRemover = require('./middlewares/default-header-remover');
 const folderLoader = require('./etc/folder-loader.js');
 const applicationErrors = require('./etc/errors.js');
 
@@ -34,6 +35,7 @@ const appFactory = () => {
   });
 
   app.use(errorHandler);
+  app.use(defaultHeaderRemover);
   app.use(notFoundErrorHandler);
 
   app.errors = applicationErrors;
