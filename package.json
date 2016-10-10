@@ -11,6 +11,7 @@
     "test-unit": "mocha --opts test/mocha.opts test/unit/",
     "test-integration": "mocha --opts test/mocha.opts test/integration/",
     "test-e2e": "mocha --opts test/mocha.opts test/e2e/",
+    "test-contract": "node_modules/dredd/bin/dredd",
     "test": "npm run lint && istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && rm -rf ./coverage",
     "start": "node index.js",
     "lint": "eslint ./app ./test ./index.js",
