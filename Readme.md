@@ -14,6 +14,7 @@
 
 #### Quality stack:
 - Chai
+- Dredd
 - EsLint
 - Istanbul
 - Mocha
@@ -40,6 +41,7 @@
 ###### Run Unit tests `npm run test-unit`
 ###### Run Integration tests `npm run test-integration`
 ###### Run End to end tests `npm run test-e2e`
+###### Run Contract tests `npm run test-contract`
 ###### Send line coverage metrics to codacy `npm run coverage` -
 *This will only take effect in CI, since Codacy "binds" each `coverage` call with a specific commit.
 
