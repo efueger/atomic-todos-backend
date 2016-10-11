@@ -1,4 +1,3 @@
-const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
@@ -9,7 +8,8 @@ const notFoundErrorHandler = require('./middlewares/not-found-handler');
 const defaultHeaderRemover = require('./middlewares/default-header-remover');
 const folderLoader = require('./etc/folder-loader.js');
 const applicationErrors = require('./etc/errors.js');
-
+const actionRegister = require('./etc/action-register');
+const actions = require('./actions');
 const logger = loggers.consoleLogger(loggers.tags.SETUP);
 
 const appFactory = () => {
@@ -23,16 +23,7 @@ const appFactory = () => {
 
   load('models');
   load('validators');
-  load('routes', (application, routeBlueprint) => {
-    const route = routeBlueprint(app);
-    route.router.stack.forEach(stackItem => {
-      stackItem.route.stack.forEach(innerStackItem => {
-        logger.info(`Route: ${innerStackItem.method.toUpperCase()} ${path.join(route.prefix, stackItem.route.path)}`);
-      });
-    });
-
-    application.use(route.prefix, route.router);
-  });
+  actionRegister.registerAll(app, actions);
 
   app.use(errorHandler);
   app.use(defaultHeaderRemover);

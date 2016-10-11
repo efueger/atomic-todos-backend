@@ -1,9 +1,10 @@
-const createActionFactory = require('../../../../app/actions/grocery-list/create');
+const CreateAction = require('../../../app/actions/grocery-list-create');
 
 describe('Unit: Action: grocery-list.create', () => {
   'use strict';
   let request = {};
   let response = {};
+  let createListAction = {};
 
   const GroceryListModel = { create: sinon.stub() };
   const GroceryListValidator = { create: sinon.stub() };
@@ -16,13 +17,13 @@ describe('Unit: Action: grocery-list.create', () => {
   beforeEach(done => {
     request = {};
     response = {};
+    createListAction = new CreateAction(app);
     done();
   });
 
   it('Should call models.GroceryList.create and respond with 201', done => {
     app.validators.GroceryList.create.returns(null);
     app.models.GroceryList.create.resolves();
-    const createAction = createActionFactory(app);
     request.body = [];
     const expectedGroceryList = { date: new Date(), finished: false, items: request.body };
 
@@ -37,7 +38,7 @@ describe('Unit: Action: grocery-list.create', () => {
       done();
     };
 
-    createAction(request, response);
+    createListAction.handle(request, response);
   });
 
   it('Should call next with an error when models.GroceryList.save rejects', done => {
@@ -47,9 +48,7 @@ describe('Unit: Action: grocery-list.create', () => {
     app.errors.databaseError.returns(expectedForwardedError);
     app.validators.GroceryList.create.returns(null);
 
-    const createAction = createActionFactory(app);
-
-    createAction(request, response, error => {
+    createListAction.handle(request, response, error => {
       expect(app.errors.databaseError).to.have.been.calledWith(expectedErrorCause);
       expect(error).to.deep.equal(expectedForwardedError);
       done();
@@ -63,9 +62,7 @@ describe('Unit: Action: grocery-list.create', () => {
     app.validators.GroceryList.create.returns(expectedErrorCause);
     app.errors.badRequest.returns(expectedForwardedError);
 
-    const createAction = createActionFactory(app);
-
-    createAction(request, response, error => {
+    createListAction.handle(request, response, error => {
       expect(app.errors.badRequest).to.have.been.calledWith(expectedErrorCause);
       expect(error).to.deep.equal(expectedForwardedError);
       done();

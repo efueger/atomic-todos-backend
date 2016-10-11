@@ -1,4 +1,4 @@
-const statusAction = require('../../../app/actions/status');
+const StatusAction = require('../../../app/actions/status');
 
 describe('Unit: Action: Status', () => {
 
@@ -6,8 +6,9 @@ describe('Unit: Action: Status', () => {
 
     const request = {};
     const response = {json: sinon.stub()};
+    const statusAction = new StatusAction({});
 
-    statusAction(request, response);
+    statusAction.handle(request, response);
 
     expect(response.json).to.have.been.calledWith({ ok: true });
     done();
