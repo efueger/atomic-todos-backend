@@ -52,3 +52,6 @@
 
 #### Code quality and test coverage metrics:
 - [Codacy](https://www.codacy.com/app/anuar-yasser/atomic-todos-backend)
+
+#### API Documentation
+- [Apiary](http://docs.atomictodosbackend.apiary.io/)
