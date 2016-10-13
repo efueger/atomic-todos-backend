@@ -20,14 +20,12 @@ describe('Unit: Middleware: Content Type Checker', () => {
     const request = { headers: {} };
     const response = {};
 
-    response['send'] = sinon.stub();
-    response['status'] = sinon.stub().returns(response);
-
-    contentTypeChecker(request, response);
-
-    expect(response.status).to.have.been.calledWith(400);
-    expect(response.send).to.have.been.calledWith('Content-Type header is not set for this request');
-    done();
+    contentTypeChecker(request, response, error => {
+      expect(error.status).to.equal(400);
+      expect(error.cause.message).to.equal('Content-Type header is not set for this request');
+      expect(error.body.message).to.equal('Content-Type header is not set for this request');
+      done();
+    });
 
   });
 
@@ -36,15 +34,14 @@ describe('Unit: Middleware: Content Type Checker', () => {
     const request = { headers: {'content-type': 'whatever'} };
     const response = {};
 
-    response['send'] = sinon.stub();
-    response['status'] = sinon.stub().returns(response);
+    contentTypeChecker(request, response, error => {
 
-    contentTypeChecker(request, response);
+      expect(error.status).to.equal(400);
+      expect(error.cause.message).to.equal('Request Content-Type header is invalid. It must be only application/json');
+      expect(error.body.message).to.equal('Request Content-Type header is invalid. It must be only application/json');
+      done();
 
-    expect(response.status).to.have.been.calledWith(400);
-    expect(response.send).to.have.been.calledWith('Request Content-Type header is invalid. It must be only application/json');
-    done();
-
+    });
   });
 
   it('Should respond with 400 and an error message when Content-Type request header is null or undefined', done => {
@@ -52,14 +49,12 @@ describe('Unit: Middleware: Content Type Checker', () => {
     const request = { headers: {'content-type': undefined} };
     const response = {};
 
-    response['send'] = sinon.stub();
-    response['status'] = sinon.stub().returns(response);
-
-    contentTypeChecker(request, response);
-
-    expect(response.status).to.have.been.calledWith(400);
-    expect(response.send).to.have.been.calledWith('Content-Type header is not set for this request');
-    done();
+    contentTypeChecker(request, response, error => {
+      expect(error.status).to.equal(400);
+      expect(error.cause.message).to.equal('Content-Type header is not set for this request');
+      expect(error.body.message).to.equal('Content-Type header is not set for this request');
+      done();
+    });
 
   });
 
