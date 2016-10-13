@@ -1,6 +1,6 @@
 'use strict';
 
-const Action = require('./base-action').Action;
+const Action = require('./base-action');
 
 class StatusAction extends Action{
 
