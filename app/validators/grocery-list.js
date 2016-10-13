@@ -1,17 +1,18 @@
 const exists = require('exists');
+const errors = require('../etc/errors');
 
 module.exports = {
 
-  create(request) {
+  create(request, response, next) {
     if (!exists(request.body)) {
-      return new Error('Request body is empty');
+      return next(errors.badRequest(new Error('Request body is empty')));
     }
 
     if (!(request.body instanceof Array)) {
-      return new Error('Request body is not an array');
+      return next(errors.badRequest(new Error('Request body is not an array')));
     }
 
-    return null;
+    return next();
   }
 
 };
