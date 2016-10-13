@@ -1,6 +1,6 @@
 const GroceryListCreateAction = require('./grocery-list-create');
 const StatusAction = require('./status');
-const methods = require('./base-action').METHODS;
+const methods = require('../etc/http').METHODS;
 
 module.exports = [
   { Constructor: GroceryListCreateAction, method: methods.POST, endpoint: '/grocery-lists' },
