@@ -1,35 +1,47 @@
+'use strict';
+
 const validator = require('../../../app/validators/grocery-list');
 
 describe('Unit: Validators: GroceryListValidator', () => {
 
-  it('Should return an error with empty request body', done => {
+  let request = {};
+  let response = {};
+
+  it('Should return a badRequest error with empty request body', done => {
+
+    request.body = null;
     const expectedErrorMessage = 'Request body is empty';
 
-    const validationError = validator.create({});
+    validator.create(request, response, error => {
+      expect(error.cause.constructor).to.deep.equal(Error);
+      expect(error.body.message).to.equal(expectedErrorMessage);
+      done();
+    });
 
-    expect(validationError.constructor).to.deep.equal(Error);
-    expect(validationError).to.have.deep.property('message', expectedErrorMessage);
-    done();
   });
 
   it('Should return an error with a request body that is not an array', done => {
+
     const expectedErrorMessage = 'Request body is not an array';
+    request.body = 'whatever';
 
-    const validationError = validator.create({body: 'Whatever'});
+    validator.create(request, response, error => {
+      expect(error.cause.constructor).to.deep.equal(Error);
+      expect(error.body.message).to.equal(expectedErrorMessage);
+      done();
+    });
 
-    expect(validationError.constructor).to.deep.equal(Error);
-    expect(validationError).to.have.deep.property('message', expectedErrorMessage);
-    done();
   });
 
   it('Should return null when request body is valid', done => {
 
-    const validationError = validator.create({body: [
-      { description: 'Something' }
-    ]});
+    request.body = [ { description: 'Something' } ];
 
-    expect(validationError).to.equal(null);
-    done();
+    validator.create(request, response, error => {
+      expect(error).to.not.exist;
+      done();
+    });
+
   });
 
 });
