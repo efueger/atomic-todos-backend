@@ -8,7 +8,16 @@ describe('Unit: Middleware: Content Type Checker', () => {
 
     const expectedContentType = 'application/json';
 
-    const request = { headers: { 'content-type': expectedContentType } };
+    const request = { method: 'POST', headers: { 'content-type': expectedContentType } };
+    const response = {};
+
+    contentTypeChecker(request, response, done);
+
+  });
+
+  it('Should ignore the absence of Content-Type on GET requests', done => {
+
+    const request = { method: 'GET' };
     const response = {};
 
     contentTypeChecker(request, response, done);
@@ -17,7 +26,7 @@ describe('Unit: Middleware: Content Type Checker', () => {
 
   it('Should respond with 400 and an error message when Content-Type is absent from request headers', done => {
 
-    const request = { headers: {} };
+    const request = { method: 'POST', headers: {} };
     const response = {};
 
     contentTypeChecker(request, response, error => {
@@ -31,7 +40,7 @@ describe('Unit: Middleware: Content Type Checker', () => {
 
   it('Should respond with 400 and an error message when Content-Type request header is different from application/json', done => {
 
-    const request = { headers: {'content-type': 'whatever'} };
+    const request = { method: 'POST', headers: {'content-type': 'whatever'} };
     const response = {};
 
     contentTypeChecker(request, response, error => {
@@ -46,7 +55,7 @@ describe('Unit: Middleware: Content Type Checker', () => {
 
   it('Should respond with 400 and an error message when Content-Type request header is null or undefined', done => {
 
-    const request = { headers: {'content-type': undefined} };
+    const request = { method:'POST', headers: {'content-type': undefined} };
     const response = {};
 
     contentTypeChecker(request, response, error => {

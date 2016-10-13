@@ -1,7 +1,13 @@
 const exists = require('exists');
 const errors = require('../etc/errors');
+const GET = require('../etc/http').METHODS.GET.toUpperCase();
 
 module.exports = (request, response, next) => {
+
+  if (request.method == GET) {
+    return next();
+  }
+
   const requestContentType = request.headers['content-type'];
 
   if (!exists(requestContentType)) {
