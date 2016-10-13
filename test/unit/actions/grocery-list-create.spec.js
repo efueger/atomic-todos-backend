@@ -31,10 +31,7 @@ describe('Unit: Action: grocery-list.create', () => {
       const actuallySavedGroceryList = app.models.GroceryList.create.firstCall.args[0];
       expect(status).to.equal(201);
       expect(app.models.GroceryList.create).to.have.been.called;
-      expect(actuallySavedGroceryList.finished).to.equal(expectedGroceryList.finished);
       expect(actuallySavedGroceryList.items).to.deep.equal(expectedGroceryList.items);
-      expect(actuallySavedGroceryList.date).to.be.a('Date');
-      expect(actuallySavedGroceryList.date.toDateString()).to.equal(expectedGroceryList.date.toDateString());
       done();
     };
 
@@ -55,19 +52,9 @@ describe('Unit: Action: grocery-list.create', () => {
     });
   });
 
-  it('Should forward a badRequest error wrapper when request body is invalid', done => {
-
-    const expectedErrorCause = new Error('Expected error');
-    const expectedForwardedError = { message:'I am a mistake!' };
-    app.validators.GroceryList.create.returns(expectedErrorCause);
-    app.errors.badRequest.returns(expectedForwardedError);
-
-    createListAction.handle(request, response, error => {
-      expect(app.errors.badRequest).to.have.been.calledWith(expectedErrorCause);
-      expect(error).to.deep.equal(expectedForwardedError);
-      done();
-    });
-
+  it('Should set pre as validator function', done => {
+    expect(createListAction.pre).to.equal(app.validators.GroceryList.create);
+    done();
   });
 
 });
