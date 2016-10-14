@@ -33,6 +33,19 @@ describe('Unit: Validators: GroceryListValidator', () => {
 
   });
 
+  it('Should return an error with a request body as an empty array', done => {
+
+    const expectedErrorMessage = 'There are no items on request body';
+    request.body = [];
+
+    validator.create(request, response, error => {
+      expect(error.cause.constructor).to.deep.equal(Error);
+      expect(error.body.message).to.equal(expectedErrorMessage);
+      done();
+    });
+
+  });
+
   it('Should return null when request body is valid', done => {
 
     request.body = [ { description: 'Something' } ];

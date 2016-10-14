@@ -12,6 +12,10 @@ module.exports = {
       return next(errors.badRequest(new Error('Request body is not an array')));
     }
 
+    if (request.body.length === 0) {
+      return next(errors.badRequest(new Error('There are no items on request body')));
+    }
+
     return next();
   }
 
