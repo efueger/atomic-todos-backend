@@ -30,6 +30,8 @@ describe('Unit: Middleware: Content Type Checker', () => {
     const response = {};
 
     contentTypeChecker(request, response, error => {
+
+      expect(error).to.exist;
       expect(error.status).to.equal(400);
       expect(error.cause.message).to.equal('Content-Type header is not set for this request');
       expect(error.body.message).to.equal('Content-Type header is not set for this request');
@@ -45,6 +47,39 @@ describe('Unit: Middleware: Content Type Checker', () => {
 
     contentTypeChecker(request, response, error => {
 
+      expect(error).to.exist;
+      expect(error.status).to.equal(400);
+      expect(error.cause.message).to.equal('Request Content-Type header is invalid. It must be only application/json');
+      expect(error.body.message).to.equal('Request Content-Type header is invalid. It must be only application/json');
+      done();
+
+    });
+  });
+
+  it('Should respond with 400 and an error message when Content-Type request header contains something similar to application/json', done => {
+
+    const request = { method: 'POST', headers: {'content-type': 'application/jsonaaaaa'} };
+    const response = {};
+
+    contentTypeChecker(request, response, error => {
+
+      expect(error).to.exist;
+      expect(error.status).to.equal(400);
+      expect(error.cause.message).to.equal('Request Content-Type header is invalid. It must be only application/json');
+      expect(error.body.message).to.equal('Request Content-Type header is invalid. It must be only application/json');
+      done();
+
+    });
+  });
+
+  it('Should respond with 400 and an error message when Content-Type request header contains duplicate application/json', done => {
+
+    const request = { method: 'POST', headers: {'content-type': 'application/json application/json'} };
+    const response = {};
+
+    contentTypeChecker(request, response, error => {
+
+      expect(error).to.exist;
       expect(error.status).to.equal(400);
       expect(error.cause.message).to.equal('Request Content-Type header is invalid. It must be only application/json');
       expect(error.body.message).to.equal('Request Content-Type header is invalid. It must be only application/json');
@@ -59,6 +94,8 @@ describe('Unit: Middleware: Content Type Checker', () => {
     const response = {};
 
     contentTypeChecker(request, response, error => {
+
+      expect(error).to.exist;
       expect(error.status).to.equal(400);
       expect(error.cause.message).to.equal('Content-Type header is not set for this request');
       expect(error.body.message).to.equal('Content-Type header is not set for this request');
