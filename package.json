@@ -36,7 +36,8 @@
     "mongoose": "^4.6.0",
     "morgan": "^1.7.0",
     "uppercamelcase": "^1.1.0",
-    "winston": "^2.2.0"
+    "winston": "^2.2.0",
+    "winston-request-logger": "^1.0.7"
   },
   "devDependencies": {
     "chai": "^3.5.0",

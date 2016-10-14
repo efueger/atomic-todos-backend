@@ -5,6 +5,7 @@ const middlewares = require('./middlewares');
 const models = require('./models');
 const validators = require('./validators');
 const loggers = require('./loggers');
+const requestLogger = require('winston-request-logger');
 
 const logger = loggers.consoleLogger(loggers.tags.MIDDLEWARE);
 
@@ -13,8 +14,8 @@ const appFactory = moduleRegister => {
   const register = moduleRegister || etc.register;
 
   const app = express();
-  logger.info('Using: Morgan');
-  app.use(middlewares.morgan);
+  logger.info('Using: Winston Request Logger');
+  app.use(requestLogger.create(loggers.requestConsoleLogger));
 
   logger.info('Using: Content Type Checker');
   app.use(middlewares.contentTypeChecker);
