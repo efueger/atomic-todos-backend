@@ -6,7 +6,7 @@ const HEADER_REGEX_MATCH = /^application\/json$/g;
 
 module.exports = (request, response, next) => {
 
-  if (request.method == GET) {
+  if (request.method === GET) {
     return next();
   }
 

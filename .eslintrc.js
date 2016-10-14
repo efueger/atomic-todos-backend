@@ -14,6 +14,7 @@ module.exports = {
     },
     "extends": "eslint:recommended",
     "rules": {
+        "eqeqeq": [2],
         "arrow-parens": [2, "as-needed"],
         "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
         "comma-dangle": [2, "never"],
