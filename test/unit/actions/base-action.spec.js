@@ -57,4 +57,19 @@ describe('Unit: Action: Base Action', () => {
     expect(() => action.register()).to.throw(`handle(req, res, next) not implemented on ${ action.constructor.name }`);
     done();
   });
+
+  it('Should throw an error when no http method is received on register call', done => {
+    const action = new Action(app);
+    action.handle = handleStub;
+
+    expect(() => action.register(null)).to.throw(`No HTTP method specified for ${ action.constructor.name }`);
+    done();
+  });
+
+  it('Should throw an error when no endpoint is received on register call', done => {
+    const action = new Action(app);
+    action.handle = handleStub;
+    expect(() => action.register(METHOD, null)).to.throw(`No endpoint specified for ${ action.constructor.name }`);
+    done();
+  });
 });

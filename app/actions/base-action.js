@@ -10,8 +10,16 @@ class Action {
 
   register(method, endpoint) {
 
-    if ( !this.handle) {
+    if (!this.handle) {
       throw new Error(`handle(req, res, next) not implemented on ${ this.constructor.name }`);
+    }
+
+    if (!method) {
+      throw new Error(`No HTTP method specified for ${ this.constructor.name }`);
+    }
+
+    if(!endpoint) {
+      throw new Error(`No endpoint specified for ${ this.constructor.name }`);
     }
 
     if (this.pre) {
