@@ -9,8 +9,7 @@ const app = appFactory();
 db.connect({
   url: process.env.ATOMIC_MONGO_URL,
   onDisconnect() {
-    logger.error('Could not connect to database on startup');
-    process.exit(0);
+    logger.error('disconnected from Mongo');
   }
 });
 
