@@ -1,6 +1,6 @@
 'use strict';
 
-const register = require('../../../app/etc/action-register');
+const register = require('../../../app/etc/register');
 
 describe('Unit: Etc: Action Register', () => {
   const expectedApp = {};
@@ -11,7 +11,7 @@ describe('Unit: Etc: Action Register', () => {
     const action = { Constructor: ActionMock, method: expectedMethod, endpoint: expectedEndpoint };
     const actionList = [action];
 
-    register.registerAll(expectedApp, actionList);
+    register.actions(expectedApp, actionList);
 
     done();
 
