@@ -1,4 +1,4 @@
-const appFactory = require('./app/main.js');
+const appFactory = require('./app');
 const loggers = require('./app/loggers');
 const db = require('./app/etc/database');
 
