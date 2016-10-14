@@ -10,7 +10,7 @@
 - Express
 - MongoDB
 - Mongoose
-- Winston and Morgan for logging
+- Winston
 
 #### Quality stack:
 - Chai
