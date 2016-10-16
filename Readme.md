@@ -6,7 +6,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Coverage/0e136a491a234501a1e243c9cf9009da)](https://www.codacy.com/app/anuar-yasser/atomic-todos-backend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=othman853/atomic-todos-backend&amp;utm_campaign=Badge_Coverage)
 
 #### Tech stack:
-- Node.js 5.8
+- Node.js
 - Express
 - MongoDB
 - Mongoose
