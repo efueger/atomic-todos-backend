@@ -1,16 +1,10 @@
 const appFactory = require('./app');
 const loggers = require('./app/loggers');
 const db = require('./app/etc/database');
-
+const env = require('./app/etc/env');
 const logger = loggers.consoleLogger(loggers.tags.INDEX);
-const port = process.env.PORT || 3000;
 const app = appFactory();
 
-db.connect({
-  url: process.env.ATOMIC_MONGO_URL,
-  onDisconnect() {
-    logger.error('disconnected from Mongo');
-  }
-});
+db.connect({ url: env.DATABASE_URL });
 
-app.listen(port, () => logger.info(`Up on port: ${port}`));
+app.listen(env.PORT, () => logger.info(`Up on port: ${env.PORT}`));
