@@ -22,7 +22,7 @@ describe('Unit: Loggers: RequestFileLogger', () => {
     expect(logger.transports.requestErrorFile).to.have.property('name', 'requestErrorFile');
     expect(logger.transports.requestErrorFile).to.have.property('filename', 'request-errors.log');
     expect(logger.transports.requestErrorFile).to.have.property('level', 'error');
-    expect(logger.transports.requestInfoFile).to.have.property('colorize', false);
+    expect(logger.transports.requestErrorFile).to.have.property('colorize', false);
     done();
   });
 
