@@ -1,7 +1,7 @@
-const loggers = require('../../app/loggers');
+const loggers = require('../../../app/loggers');
 const winston = require('winston');
 
-describe('Integration: File Logger', () => {
+describe('Unit: Loggers: File Logger', () => {
 
 
   const loggerTag = 'logger';
@@ -24,8 +24,9 @@ describe('Integration: File Logger', () => {
   it('Should contain a transport to info file', done => {
 
     expect(logger.winston.transports).to.have.property('info-file');
-    expect(logger.winston.transports['info-file']).to.have.property('filename', 'info.log');
+    expect(logger.winston.transports['info-file']).to.have.property('filename', 'infos.log');
     expect(logger.winston.transports['info-file']).to.have.property('level', 'info');
+    expect(logger.winston.transports['info-file']).to.have.property('colorize', false);
     done();
 
   });
@@ -33,8 +34,9 @@ describe('Integration: File Logger', () => {
   it('Should contain a transport to error file', done => {
 
     expect(logger.winston.transports).to.have.property('error-file');
-    expect(logger.winston.transports['error-file']).to.have.property('filename', 'error.log');
+    expect(logger.winston.transports['error-file']).to.have.property('filename', 'errors.log');
     expect(logger.winston.transports['error-file']).to.have.property('level', 'error');
+    expect(logger.winston.transports['error-file']).to.have.property('colorize', false);
     done();
 
   });

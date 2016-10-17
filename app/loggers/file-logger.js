@@ -5,12 +5,12 @@ const winston = new (winstonModule.Logger)({
   transports: [
     new (winstonModule.transports.File)({
       name: 'info-file',
-      filename: 'info.log',
+      filename: 'infos.log',
       level: 'info'
     }),
     new (winstonModule.transports.File)({
       name: 'error-file',
-      filename: 'error.log',
+      filename: 'errors.log',
       level: 'error'
     })
   ]

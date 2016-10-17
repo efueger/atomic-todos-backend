@@ -16,6 +16,7 @@ const appFactory = moduleRegister => {
   const app = express();
   logger.info('Using: Winston Request Logger');
   app.use(requestLogger.create(loggers.requestConsoleLogger));
+  app.use(requestLogger.create(loggers.requestFileLogger));
 
   logger.info('Using: Content Type Checker');
   app.use(middlewares.contentTypeChecker);

@@ -4,7 +4,7 @@ const logger = require('../../../app/loggers/request-console-logger');
 describe('Unit: Loggers: RequestConsoleLogger', () => {
 
   it('Should be a winston.Logger object', done => {
-    expect(logger).to.deep.an.instanceof(winston.Logger);
+    expect(logger).to.be.an.instanceof(winston.Logger);
     done();
   });
 
