@@ -1,9 +1,17 @@
+const envs = require('../etc/environments');
+const env = require('../etc/env');
+const DEV = envs.DEV;
+const PROD = envs.PROD;
+
+const tag = (text, envs) => ({ text, envs, currentEnv: env.ENV });
+
 module.exports = {
-  APP: { text: 'app', enabled: true },
-  DEFAULT: { text: 'no-tag', enabled: true },
-  INDEX: { text: 'index', enabled: true },
-  MIDDLEWARE: { text: 'middleware', enabled: true },
-  MONGO: { text: 'mongo', enabled: true },
-  ROUTE: { text: 'route', enabled: true },
-  SETUP: { text: 'setup', enabled: true }
+  APP: tag('app', [DEV]),
+  DEFAULT: tag('no-tag', [DEV]),
+  ERROR: tag('atomic-error', [DEV, PROD]),
+  INDEX: tag('index', [DEV]),
+  MIDDLEWARE: tag('middleware',[DEV]),
+  MONGO: tag('mongo',[DEV]),
+  ROUTE: tag('route', [DEV]),
+  SETUP: tag('setup', [DEV])
 };

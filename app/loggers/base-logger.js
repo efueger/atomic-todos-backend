@@ -1,5 +1,7 @@
 'use strict';
 
+const exists = require('exists');
+
 class BaseLogger {
 
   constructor(config) {
@@ -23,9 +25,13 @@ class BaseLogger {
   }
 
   _log(message, log) {
-    if (message) {
+    if (this._isLogAllowed(message)) {
       log(this._tagFormatter(this.tag), this._messageFormatter(message));
     }
+  }
+
+  _isLogAllowed(message) {
+    return (exists(this.tag.envs) && this.tag.envs.indexOf(this.tag.currentEnv) !== -1) && exists(message);
   }
 
   info(message) {

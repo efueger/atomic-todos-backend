@@ -6,7 +6,7 @@ describe('Unit: BaseLogger', () => {
   const mockConfig = (tagText, formattedTagText, formattedMessageText) => {
     return {
       winston,
-      tag: { text: tagText },
+      tag: { text: tagText, envs: ['a'], currentEnv: 'a' },
       tagFormatter: formattedTagText ? () => formattedTagText : null,
       messageFormatter: formattedMessageText ? () => formattedMessageText : null
     };
@@ -109,6 +109,18 @@ describe('Unit: BaseLogger', () => {
     expect(winston.info).to.have.been.calledWith(expectedTag, expectedMessage);
     done();
 
+  });
+
+  it('Should not call winston info when tag envs are deactivated', done => {
+    const baseLogger = new BaseLogger({
+      winston,
+      tag: { text: 'whatever', envs: ['a', 'b'], currentEnv: 'c' }
+    });
+
+    baseLogger.info('Some log');
+
+    expect(winston.info).to.not.have.been.called;
+    done();
   });
 
 });
