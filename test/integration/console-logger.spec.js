@@ -6,7 +6,7 @@ const stdout = require('test-console').stdout;
 
 describe('Integration: ConsoleLogger', () => {
 
-  const logger = loggerBuilder({text: 'test'});
+  const logger = loggerBuilder({ text: 'test', envs:['test'], currentEnv: 'test' });
 
   it('Should have the tag [TEST]', done => {
 
