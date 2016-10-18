@@ -1,6 +1,9 @@
 const winston = require('winston');
 
-module.exports = new (winston.Logger)({
-  colorize: false,
+const logger = new (winston.Logger)({
   transports: [new (winston.transports.Console)({ colorize: false })]
 });
+
+logger.transports.console.colorize = false;
+
+module.exports = logger;
