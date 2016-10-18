@@ -65,3 +65,7 @@ This app uses the `index` files to organise the folders so that they can be seen
 #### Adding endpoints to the API
 
 To make it easier to add new endpoints to the API, the idea of the `index.js` is used together with the `Action` class (located in `app/action/base-action.js`). The `Action` class and its subclasses help to achieve the `Dependency Injection` concept into our routes, so that they can be more testable and more concise. Besides that, it is possible to pre-validate all the requests before actually processing them, through the method `pre` of the `Action` class.
+
+#### Currently in trial
+
+- pm2
